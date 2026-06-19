@@ -30,7 +30,7 @@ import ModelSelector from '../../components/model-selector/model-selector';
 import { useSelector, useDispatch } from 'react-redux';
 import { IConfigStateReducer } from '../../store/config';
 import { configStoreActions } from '../../store/config';
-import { CONTENT_TYPES, vars, BedrockModality } from '../../amplify/global-variables';
+import { CONTENT_TYPES, vars, BedrockModality, modelSupportsTemperature } from '../../amplify/global-variables';
 
 interface InferenceConfig {
   maxTokens: number;
@@ -462,14 +462,16 @@ export default function ConfigPage() {
                 onChange={(e) => updateInferenceConfig('defaultDetailedReportConfig', 'topP', parseFloat(e.target.value))}
                 sx={{ flex: 1, minWidth: 100 }}
               />
-              <TextField
-                label="Temperature"
-                type="number"
-                inputProps={{ step: 0.1, min: 0.1, max: 1.0 }}
-                value={config.defaultDetailedReportConfig.inferenceConfig.temperature}
-                onChange={(e) => updateInferenceConfig('defaultDetailedReportConfig', 'temperature', parseFloat(e.target.value))}
-                sx={{ flex: 1, minWidth: 120 }}
-              />
+              {modelSupportsTemperature(config.defaultDetailedReportConfig.bedrockModelId) && (
+                <TextField
+                  label="Temperature"
+                  type="number"
+                  inputProps={{ step: 0.1, min: 0.1, max: 1.0 }}
+                  value={config.defaultDetailedReportConfig.inferenceConfig.temperature}
+                  onChange={(e) => updateInferenceConfig('defaultDetailedReportConfig', 'temperature', parseFloat(e.target.value))}
+                  sx={{ flex: 1, minWidth: 120 }}
+                />
+              )}
               <TextField
                 label="Top K"
                 type="number"

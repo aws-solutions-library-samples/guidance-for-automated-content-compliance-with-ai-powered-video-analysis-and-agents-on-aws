@@ -296,11 +296,15 @@ def extract_frame_analysis_with_anthropic(bucketName, frameKey, config, s3VideoO
     native_request = {
         "anthropic_version": "bedrock-2023-05-31",
         "max_tokens": inference_config.get('maxTokens'),
-        "temperature": inference_config.get('temperature'),
         "top_k": inference_config.get('topK'),
         "messages": message_list
     }
-    
+
+    # Models that have deprecated the temperature parameter (Bedrock rejects it)
+    temperature_excluded_models = ['anthropic.claude-opus-4-7', 'anthropic.claude-opus-4-8']
+    if not any(excluded in config_model_id.lower() for excluded in temperature_excluded_models):
+        native_request["temperature"] = inference_config.get('temperature')
+
     # Models that don't support simultaneous temperature + top_p
     top_p_excluded_models = ['anthropic.claude-sonnet-4-5', 'anthropic.claude-sonnet-4-6', 'anthropic.claude-opus-4-6']
     if not any(excluded in config_model_id.lower() for excluded in top_p_excluded_models):

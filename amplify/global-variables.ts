@@ -115,6 +115,19 @@ export enum BedrockModelIds {
   TWELVE_LABS_PEGASUS_1_2 = 'us.twelvelabs.pegasus-1-2-v1:0'
 }
 
+// Models that have deprecated the `temperature` inference parameter (Bedrock
+// rejects requests that include it). Keep this in sync with
+// `temperature_excluded_models` in amplify/python-functions/analyseFrames/index.py.
+export const TEMPERATURE_UNSUPPORTED_MODEL_IDS: string[] = [
+  BedrockModelIds.CLAUDE_4_7_OPUS,
+  BedrockModelIds.CLAUDE_4_8_OPUS,
+];
+
+// Returns false only for models known to reject `temperature`. Unknown/undefined
+// model ids default to true so existing behavior is unchanged.
+export const modelSupportsTemperature = (modelId?: string): boolean =>
+  !modelId || !TEMPERATURE_UNSUPPORTED_MODEL_IDS.includes(modelId);
+
 export const vars = {
     APP_PREFIX: appPrefix,
     ASSET_S3_BUCKET_NAME: appPrefix + '-assets',

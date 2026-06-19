@@ -27,7 +27,7 @@ import {
 } from 'recharts';
 import TuneIcon from '@mui/icons-material/Tune';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import { vars } from '../../amplify/global-variables';
+import { vars, modelSupportsTemperature } from '../../amplify/global-variables';
 
 interface TimelineEvent {
   name: string;
@@ -610,7 +610,9 @@ export default function TimelineAnalysisDashboard({ s3Id, onTimestampClick, show
                   Temperature
                 </Typography>
                 <Typography sx={{ color: 'white', fontSize: '14px' }}>
-                  {frameAnalysisParams?.frameAnalysisInferenceTemperature || 'Default'}
+                  {modelSupportsTemperature(frameAnalysisParams?.frameAnalysisBedrockModelId)
+                    ? (frameAnalysisParams?.frameAnalysisInferenceTemperature || 'Default')
+                    : 'Default'}
                 </Typography>
               </Box>
               <Box>
