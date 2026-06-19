@@ -113,19 +113,60 @@ The following table provides a sample cost breakdown for deploying this Guidance
 | Amazon Cognito | 1,000 active users per month without advanced security feature | $ 0.00 |
 
 ## Prerequisites
+> ⚠️ **IMPORTANT: Ensure the prerequisites are complete before moving onto the deployment steps.**
 
 ### Operating System
+You will need an environment to run the deployment steps from. This will be your temporary working space. 
 
 - Local development/deployment has been tested on Mac and Windows
-- For AWS environments, you may use Amazon Linux 2023
+- To develop/deploy from an AWS environment, you may use an Amazon Linux 2023 kernel-6.1+ AMI to run the deployment steps. 
+  - Create an EC2 instance with the AMI above
+  - Ensure the EC2 instance type is at least a t3.medium
+  - Ensure the EC2 instance has an IAM role with sufficient permissions to deploy the CDK stacks
+  - Add a security group inbound rule allowing SSH from the EC2 Instance Connect prefix list
+  ![EC2 Instance Connect SSH Configuration](docs/images/ec2-instance-connect-security-group.png)
+  - Then, connect to the instance following [these steps](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-methods.html#ec2-instance-connect-connecting-console).
 
-### Local Development
 
-- **Node.js (v18.17+) and npm** — required for the frontend, CDK synthesis, and cross-platform Python Lambda bundling (uses `fs.cpSync`)
-- **Python 3 and pip3** — required for installing Lambda function dependencies during deployment
-- **AWS CLI** — configured with credentials (`aws configure`)
-- **AWS Amplify CLI** — (`npm install -g @aws-amplify/backend-cli`)
-- **AWS CDK CLI (v2)** — (`npm install -g aws-cdk`)
+### Dependencies
+
+- **Git** — required to download the source code
+  - On Amazon Linux 2023, install using:
+  ```bash
+  sudo dnf install -y git
+  ```
+- **Node.js (v18.17+) and npm** — required for the frontend, CDK synthesis, and cross-platform Python Lambda bundling
+  - On Amazon Linux 2023, install using:
+  ```bash
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+
+  # reload your shell so nvm is on PATH
+  source ~/.bashrc
+
+  nvm install 18
+  ```
+
+- **Python and Pip** — required for bundling Lambda function dependencies during deployment
+  - Ensure at least Python 3.12 is available
+  - Install using:
+  ```bash
+  # Install Python 3.12 (separate package; leaves system python3=3.9 intact)
+  
+  sudo dnf install -y python3.12 python3.12-pip
+  ```
+
+- **AWS CLI** — configured with credentials 
+  - On Amazon Linux 2023, the AWS CLI is already available and configured if you specified an IAM role when creating the EC2 instance
+- **AWS Amplify CLI** — required to deploy the infrastructure
+  - Install using:
+  ```bash
+  npm install -g @aws-amplify/backend-cli
+  ```
+- **AWS CDK CLI (v2)** — required to deploy the infrastructure
+  - Install using:
+  ```bash
+  npm install -g aws-cdk
+  ```
 
 ### Third-party tools
 
@@ -135,7 +176,13 @@ The following table provides a sample cost breakdown for deploying this Guidance
 ### AWS account requirements
 
 - **Amazon Bedrock foundation models** — ensure models selected are accessible
-- **AWS CDK Bootstrap** — CDK must be bootstrapped once in each operating region if it doesn't already exist. Run `cdk bootstrap aws://<account-id>/<region>`, substituting the values. For detailed explanation, see [AWS CDK bootstrapping guide](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html)
+- **AWS CDK Bootstrap** — CDK must be bootstrapped once in each operating region if it doesn't already exist. For detailed explanation, see [AWS CDK bootstrapping guide](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html)
+  - Configure using:
+  ```bash
+  # Important: substitute account id and region with real values
+
+  cdk bootstrap aws://<account-id>/<region>
+  ```
 
 ### Service limits
 
@@ -149,7 +196,21 @@ The following table provides a sample cost breakdown for deploying this Guidance
 
 ### Supported Regions
 
-The solution has been tested with the **us-west-2** region extensively
+The solution has been tested with the **us-west-2** region extensively.
+
+Check if your region is set:
+```bash
+# Should return non-empty region
+
+aws configure get region
+```
+
+If this command returned empty, you need to set your region
+
+```bash
+# Important: substitute the region (e.g. us-west-2)
+aws configure set region <region>
+```
 
 
 ## Deployment Steps
@@ -158,16 +219,21 @@ The solution has been tested with the **us-west-2** region extensively
 
 ```bash
 git clone https://github.com/aws-solutions-library-samples/guidance-for-automated-content-compliance-with-ai-powered-video-analysis-and-agents-on-aws.git
+
 cd guidance-for-automated-content-compliance-with-ai-powered-video-analysis-and-agents-on-aws
-npm install
+
+# Note: this command takes some time
+npm ci
 ```
 
 #### 2. Set your environment branch
 
 Create or update `.env.local` at the project root:
 
-```
-AWS_BRANCH=<your-unique-name>
+```bash
+# Important: substitute the branch name
+
+echo "AWS_BRANCH=<your-unique-name>" >> .env.local
 ```
 
 This value namespaces your SSM parameters and resources so multiple developers can deploy to the same account without conflicts.
@@ -177,10 +243,12 @@ This value namespaces your SSM parameters and resources so multiple developers c
 The deployment requires Mimir SSM parameters to exist, even if you don't use Mimir. Run the setup script once per AWS account before the first deploy:
 
 ```bash
+# Note: if this returns no output, ensure the script is executable first (chmod +x ./scripts/setup-mimir.sh)
+
 ./scripts/setup-mimir.sh
 ```
 
-It prompts for two values (either can be skipped by pressing Enter):
+It prompts for two values (either can be skipped by pressing Enter). Do NOT leave the values blank, otherwise deploying the sandbox will fail.
 
 - **Custom Action Key** — the `x-api-key` value Mimir sends to your `/mimir-action` endpoint. The script creates a shared API Gateway key and stores its ID in SSM for CDK to import. Requires redeploy if you need to update it later.
 - **API Token** — the bearer token used when pushing compliance data back to the Mimir API. Read at runtime; takes effect immediately.
@@ -189,42 +257,62 @@ All Mimir parameters are stored under `/shared/` in SSM, so they're shared acros
 
 #### 4. Customize the rating system (recommended)
 
-The default analysis prompt uses generic made-up rating categories that don't exist. For better accuracy, replace them with a well-known industry rating system and define what each level means. See [Customizing the Rating System](#customizing-the-rating-system) for details and examples.
+The default analysis prompt uses generic made-up rating categories that don't exist. For better accuracy, replace them with a well-known industry rating system and define what each level means. See [Customizing the Rating System](#customizing-the-rating-system) for details and examples. To deploy the default, continue with the following step.
 
 #### 5. Deploy the backend (cloud sandbox via Amplify)
 
 ```bash
+# Create and activate an isolated venv 
+# Ensures correct python/pip version
+  
+python3.12 -m venv ~/deployenv
+source ~/deployenv/bin/activate
+
 npm run sandbox
 ```
 
-This uses `ampx sandbox` to deploy all backend resources into your AWS account. The first deploy takes several minutes.
+This uses `ampx sandbox` to deploy all backend resources into your AWS account. The first deploy takes about 7 minutes.
 
-OR, to stream Lambda logs in real time (optional):
+#### 6. Run or deploy the frontend
 
-```bash
-npm run sandbox-logs
-```
+You can run the frontend locally for development, or deploy it to the S3 + CloudFront hosting. Either way it talks to the same backend.
 
-#### 6. Run the frontend locally
+**Option A — Run locally**
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser. Sign up for an account through the Cognito-hosted auth flow.
+Open [http://localhost:3000](http://localhost:3000) in your browser. Sign up for an account through the Cognito auth flow.
+
+**Option B — Deploy to S3 + CloudFront (hosted URL)**
+
+The backend deploy step creates a private S3 bucket and a CloudFront distribution for the frontend. Build and publish the app with:
+
+```bash
+./scripts/deploy-frontend.sh
+```
+
+This builds a static export of the app, uploads it to the hosting bucket, and invalidates the CloudFront cache. When it finishes it prints the CloudFront URL — open that in your browser and sign up through the Cognito auth flow. The same URL is available in `amplify_outputs.json` under `custom.frontendUrl`.
+
+> The CloudFront URL serves the static app (HTML/JS) publicly. Access to your data is still protected by Amazon Cognito at the API and data layer. Re-run the script whenever you want to publish new frontend changes.
 
 
 ## Deployment Validation
 
-<Provide steps to validate a successful deployment, such as terminal output, verifying that the resource is created, status of the CloudFormation template, etc.>
+**Backend**
 
+- After running `npm run sandbox`, you should see the stack output values, and the following text:
+  - `[Sandbox] Watching for file changes... File written: amplify_outputs.json`
 
-**Examples:**
+**OPTIONAL: Frontend (local)**
 
-* Open CloudFormation console and verify the status of the template with the name starting with xxxxxx.
-* If deployment is successful, you should see an active database instance with the name starting with <xxxxx> in        the RDS console.
-*  Run the following CLI command to validate the deployment: ```aws cloudformation describe xxxxxxxxxxxxx```
+- Run `npm run dev` and open [http://localhost:3000](http://localhost:3000). You should reach the Cognito sign-up/sign-in screen, and after signing in, the Content Compliance Dashboard.
 
+**Frontend (S3 + CloudFront)**
+
+- Frontend deployed to: https://<distribution>.cloudfront.net`.
+- Open that URL in your browser. It should redirect to HTTPS and load the same dashboard (allow a few minutes after the first deploy for the distribution and cache invalidation to propagate).
 
 
 ## Running the Guidance
@@ -259,6 +347,8 @@ The rating prompt is defined in `amplify/python-functions/analyseChunks/index.py
 Replace these with a recognized system and add descriptions so the model understands what each level means.
 
 The more specific your rating definitions are, the more consistently the model will classify content. This is especially important for borderline content where the distinction between adjacent ratings matters.
+
+
 
 #### OPTIONAL: Configure CI/CD
 

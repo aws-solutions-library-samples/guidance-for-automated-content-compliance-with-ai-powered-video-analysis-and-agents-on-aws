@@ -26,6 +26,7 @@ import { addAuthenticatedMethod, addCorsOptions } from './utils/api-auth.js';
 import { Policy, PolicyStatement, ManagedPolicy, Effect } from "aws-cdk-lib/aws-iam";
 import { vars, PromptLibrary } from './global-variables.js';
 import {CustomLambdaConstruct} from './python-functions/resources';
+import { FrontendHostingConstruct } from './frontend-hosting/resources';
 import { createComplianceWorkflow } from './stepFunctions/complianceWorkflow.js';
 import { createPolicies, applyLambdaPolicies, applyStepFunctionPolicies, createS3ObjectTaggingPolicy } from './utils/permissions.js';
 
@@ -44,6 +45,14 @@ cfnUserPool.usernameAttributes = [];
 export const customFunctionsStack = new CustomLambdaConstruct(
   backend.stack,
   vars.APP_PREFIX + "-custom-functions",
+);
+
+// Static hosting (S3 + CloudFront) for the deployed frontend. The exported app
+// is uploaded by scripts/deploy-frontend.sh; the bucket/distribution/URL are
+// surfaced via amplify_outputs.json (see backend.addOutput below).
+const frontendHosting = new FrontendHostingConstruct(
+  backend.stack,
+  vars.APP_PREFIX + "-frontend-hosting",
 );
 
 const mediaConvertRole = new cdk.aws_iam.Role(backend.stack, 'MediaConvertRole', {
@@ -976,6 +985,10 @@ backend.addOutput({
     region: cdk.Aws.REGION,
     apiName: restAPI.restApiName,
     stepFunctionArn: complianceWorkflowStateMachine.stateMachineArn,
+    // Frontend static hosting — consumed by scripts/deploy-frontend.sh
+    frontendBucketName: frontendHosting.bucket.bucketName,
+    frontendDistributionId: frontendHosting.distribution.distributionId,
+    frontendUrl: `https://${frontendHosting.distribution.distributionDomainName}`,
     API: {
       [restAPI.restApiName]: {
         endpoint: restAPI.url,

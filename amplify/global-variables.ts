@@ -116,6 +116,7 @@ export enum BedrockModelIds {
 export const vars = {
     APP_PREFIX: appPrefix,
     ASSET_S3_BUCKET_NAME: appPrefix + '-assets',
+    FRONTEND_S3_BUCKET_NAME: appPrefix + '-frontend',
     API_PATHS: {
         ASSETS: 'assets',
         VIDEO_ASSETS: 'assets/video',
