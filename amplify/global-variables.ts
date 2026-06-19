@@ -105,6 +105,8 @@ export enum BedrockModelIds {
   CLAUDE_4_5_SONNET = 'global.anthropic.claude-sonnet-4-5-20250929-v1:0',
   CLAUDE_4_6_SONNET = 'global.anthropic.claude-sonnet-4-6',
   CLAUDE_4_6_OPUS = 'global.anthropic.claude-opus-4-6-v1',
+  CLAUDE_4_7_OPUS = 'global.anthropic.claude-opus-4-7',
+  CLAUDE_4_8_OPUS = 'global.anthropic.claude-opus-4-8',
   MISTRAL_PIXTRAL_LARGE = 'mistral.pixtral-large-2502-v1:0',
   META_LLAMA3_2_11B_INSTRUCT = 'meta.llama3-2-11b-instruct-v1:0',
   META_LLAMA3_2_90B_INSTRUCT = 'meta.llama3-2-90b-instruct-v1:0',
@@ -342,6 +344,32 @@ export const vars = {
       {
         id: BedrockModelIds.CLAUDE_4_6_OPUS,
         name: 'Claude 4.6 Opus',
+        provider: 'Anthropic',
+        category: BedrockModality.MULTIMODAL,
+        modalities: [BedrockModality.TEXT, BedrockModality.IMAGE, BedrockModality.VIDEO],
+        useCase: [BedrockUseCase.VIDEO_UNDERSTANDING, BedrockUseCase.IMAGE_UNDERSTANDING, BedrockUseCase.CHAT],
+        pricing: {
+          inputTokens: 0.005,  // per 1K tokens
+          outputTokens: 0.025  // per 1K tokens
+        },
+        isDeprecated: false
+      },
+      {
+        id: BedrockModelIds.CLAUDE_4_7_OPUS,
+        name: 'Claude 4.7 Opus',
+        provider: 'Anthropic',
+        category: BedrockModality.MULTIMODAL,
+        modalities: [BedrockModality.TEXT, BedrockModality.IMAGE, BedrockModality.VIDEO],
+        useCase: [BedrockUseCase.VIDEO_UNDERSTANDING, BedrockUseCase.IMAGE_UNDERSTANDING, BedrockUseCase.CHAT],
+        pricing: {
+          inputTokens: 0.005,  // per 1K tokens
+          outputTokens: 0.025  // per 1K tokens
+        },
+        isDeprecated: false
+      },
+      {
+        id: BedrockModelIds.CLAUDE_4_8_OPUS,
+        name: 'Claude 4.8 Opus',
         provider: 'Anthropic',
         category: BedrockModality.MULTIMODAL,
         modalities: [BedrockModality.TEXT, BedrockModality.IMAGE, BedrockModality.VIDEO],

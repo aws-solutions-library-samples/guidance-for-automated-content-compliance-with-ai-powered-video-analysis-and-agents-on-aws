@@ -352,10 +352,11 @@ The more specific your rating definitions are, the more consistently the model w
 
 Amazon Bedrock regularly releases new foundation models and retires older ones. The models that appear in the Config page are defined in `amplify/global-variables.ts`. When a new model is released (or an existing one is deprecated), update this file and redeploy so the app keeps offering current models.
 
-There are two places to edit, and they must stay in sync:
+There are three places to edit, and they must stay in sync:
 
-1. The `BedrockModelIds` enum — holds the inference profile / model id.
-2. The `vars.BEDROCK_MODELS` array — holds the descriptive entry (name, provider, modality, use cases, token ranges, and pricing used for cost estimates).
+1. The `BedrockModelIds` enum (in `amplify/global-variables.ts`) — holds the inference profile / model id.
+2. The `vars.BEDROCK_MODELS` array (in `amplify/global-variables.ts`) — holds the descriptive entry (name, provider, modality, use cases, token ranges, and the pricing the UI uses for cost estimates).
+3. The `model_pricing` map in `calculate_model_cost()` (in `amplify/python-functions/commoncode/__init__.py`) — the pricing the Lambda functions use to compute and record the actual cost statistics for each analysis, keyed by the same model id.
 
 **Add a new model**
 
@@ -382,6 +383,16 @@ export enum BedrockModelIds {
 },
 ```
 
+```python
+# 3) Add a matching pricing entry to the model_pricing map in
+#    calculate_model_cost() in amplify/python-functions/commoncode/__init__.py
+'global.anthropic.claude-sonnet-x-abcd-v1:0': {
+    'provider': 'Anthropic', 'model': 'Claude x Sonnet',
+    'input': 0.003,   # per 1K tokens (for video-priced models, store the per-second-of-video rate here)
+    'output': 0.015,  # per 1K tokens
+},
+```
+
 **Deprecate an old model**
 
 Prefer marking a model `isDeprecated: true` over deleting its entry, so historical analyses that referenced it still render correctly (e.g. `Claude 3.5 Sonnet v2` and `Claude 3.7 Sonnet` are already flagged this way). Deprecated models are kept out of new analyses but remain resolvable for past results:
@@ -395,7 +406,7 @@ Prefer marking a model `isDeprecated: true` over deleting its entry, so historic
 },
 ```
 
-After editing, redeploy the backend with `npm run sandbox`, and if you use the hosted frontend, re-run `./scripts/deploy-frontend.sh`. Make sure model access is enabled for any newly added models in the Bedrock console, and verify the pricing values against the [Bedrock pricing page](https://aws.amazon.com/bedrock/pricing/) so the cost estimates in the app stay accurate.
+After editing, redeploy the backend with `npm run sandbox`, and if you use the hosted frontend, re-run `./scripts/deploy-frontend.sh`. Make sure model access is enabled for any newly added models in the Bedrock console, and verify the pricing values in both files against the [Bedrock pricing page](https://aws.amazon.com/bedrock/pricing/) so the cost estimates and recorded statistics stay accurate.
 
 
 

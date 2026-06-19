@@ -212,6 +212,8 @@ def calculate_model_cost(model_id: str, input_tokens: int, output_tokens: int, s
         'global.anthropic.claude-sonnet-4-5-20250929-v1:0': {'provider': 'Anthropic', 'model': 'Claude 4.5 Sonnet', 'input': 0.003, 'output': 0.015},
         'global.anthropic.claude-sonnet-4-6': {'provider': 'Anthropic', 'model': 'Claude 4.6 Sonnet', 'input': 0.003, 'output': 0.015},
         'global.anthropic.claude-opus-4-6-v1': {'provider': 'Anthropic', 'model': 'Claude 4.6 Opus', 'input': 0.005, 'output': 0.025},
+        'global.anthropic.claude-opus-4-7': {'provider': 'Anthropic', 'model': 'Claude 4.7 Opus', 'input': 0.005, 'output': 0.025},
+        'global.anthropic.claude-opus-4-8': {'provider': 'Anthropic', 'model': 'Claude 4.8 Opus', 'input': 0.005, 'output': 0.025},
         'us.twelvelabs.pegasus-1-2-v1:0': {'provider': 'Twelve Labs', 'model': 'Pegasus 1.2', 'input': 0.00049, 'output': 0.0075} # per second of video = input cost
     }
 

@@ -84,6 +84,25 @@ export default function HistoryPage() {
     loadAnalyses();
   }, [showBookmarked]);
 
+  // Opening a result is a full-document load in the static export, so returning
+  // via the browser Back button can restore this page from the bfcache with the
+  // "Loading analysis results..." overlay still visible. Clear it whenever the
+  // page is shown or becomes visible again. Mirrors the handling in app/analyze/page.tsx.
+  useEffect(() => {
+    const clearOverlay = () => setNavigating(false);
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') clearOverlay();
+    };
+    window.addEventListener('pageshow', clearOverlay);
+    window.addEventListener('popstate', clearOverlay);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      window.removeEventListener('pageshow', clearOverlay);
+      window.removeEventListener('popstate', clearOverlay);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
   const handleDelete = async (sessionId: string, identityId: string) => {
     setDeleting(true);
     try {
