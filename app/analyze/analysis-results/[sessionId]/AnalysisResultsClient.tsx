@@ -55,7 +55,18 @@ const getModelDisplayName = (modelId: string): string => {
 
 export default function AnalysisResultsClient() {
   const params = useParams();
-  const sessionId = params.sessionId as string;
+  // On a static export, every /analyze/analysis-results/* deep link is served the
+  // same prerendered shell (the "placeholder" page — see the CloudFront function in
+  // amplify/frontend-hosting/resources.ts), so useParams() can return that build-time
+  // placeholder instead of the real id. Read the sessionId from the URL, falling back
+  // to the route param (covers local dev and in-app client navigation).
+  const [sessionId] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const lastSegment = window.location.pathname.split('/').filter(Boolean).pop();
+      if (lastSegment) return decodeURIComponent(lastSegment);
+    }
+    return (params.sessionId as string) || '';
+  });
   const [analysisResult, setAnalysisResult] = useState<IVideoAnalysisHistoryResult | null>(null);
   const [statistics, setStatistics] = useState<IStatistic[]>([]);
   const [loading, setLoading] = useState(true);

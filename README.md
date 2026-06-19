@@ -348,6 +348,55 @@ Replace these with a recognized system and add descriptions so the model underst
 
 The more specific your rating definitions are, the more consistently the model will classify content. This is especially important for borderline content where the distinction between adjacent ratings matters.
 
+#### Updating Bedrock Models
+
+Amazon Bedrock regularly releases new foundation models and retires older ones. The models that appear in the Config page are defined in `amplify/global-variables.ts`. When a new model is released (or an existing one is deprecated), update this file and redeploy so the app keeps offering current models.
+
+There are two places to edit, and they must stay in sync:
+
+1. The `BedrockModelIds` enum — holds the inference profile / model id.
+2. The `vars.BEDROCK_MODELS` array — holds the descriptive entry (name, provider, modality, use cases, token ranges, and pricing used for cost estimates).
+
+**Add a new model**
+
+```typescript
+// 1) Add the id to the BedrockModelIds enum
+export enum BedrockModelIds {
+  // ...existing ids...
+  CLAUDE_x_SONNET = 'global.anthropic.claude-sonnet-x-abcd-v1:0',
+}
+
+// 2) Add a matching entry to vars.BEDROCK_MODELS
+{
+  id: BedrockModelIds.CLAUDE_x_SONNET,
+  name: 'Claude x Sonnet',
+  provider: 'Anthropic',
+  category: BedrockModality.MULTIMODAL,
+  modalities: [BedrockModality.TEXT, BedrockModality.IMAGE, BedrockModality.VIDEO],
+  useCase: [BedrockUseCase.VIDEO_UNDERSTANDING, BedrockUseCase.IMAGE_UNDERSTANDING, BedrockUseCase.CHAT],
+  pricing: {
+    inputTokens: 0.003,   // per 1K tokens — set to the model's actual pricing
+    outputTokens: 0.015,  // per 1K tokens
+  },
+  isDeprecated: false,
+},
+```
+
+**Deprecate an old model**
+
+Prefer marking a model `isDeprecated: true` over deleting its entry, so historical analyses that referenced it still render correctly (e.g. `Claude 3.5 Sonnet v2` and `Claude 3.7 Sonnet` are already flagged this way). Deprecated models are kept out of new analyses but remain resolvable for past results:
+
+```typescript
+{
+  id: BedrockModelIds.CLAUDE_4_5_SONNET,
+  name: 'Claude 4.5 Sonnet',
+  // ...
+  isDeprecated: true,  // hidden from new analyses, retained for past results
+},
+```
+
+After editing, redeploy the backend with `npm run sandbox`, and if you use the hosted frontend, re-run `./scripts/deploy-frontend.sh`. Make sure model access is enabled for any newly added models in the Bedrock console, and verify the pricing values against the [Bedrock pricing page](https://aws.amazon.com/bedrock/pricing/) so the cost estimates in the app stay accurate.
+
 
 
 #### OPTIONAL: Configure CI/CD
@@ -392,7 +441,13 @@ See the [MIMIR Action Handler README](amplify/python-functions/mimirActionHandle
 ## Cleanup
 
 - Tear down the cloud sandbox with Amplify. See this [reference](https://docs.amplify.aws/react/deploy-and-host/sandbox-environments/features/#delete-a-sandbox) for delete options.
-- Verify that any uploaded content has been deleted from the S3 bucket
+- Verify that any uploaded content has been deleted from the S3 assets bucket.
+
+- **Frontend hosting (S3 + CloudFront)** — if you deployed the hosted frontend with `./scripts/deploy-frontend.sh` (Option B), the hosting bucket and the CloudFront distribution are part of the sandbox stack (created in `amplify/frontend-hosting/resources.ts` with `autoDeleteObjects` and a `DESTROY` removal policy). Deleting the sandbox above removes the distribution and the bucket, along with the static files the script uploaded. Confirm the teardown completed:
+  - The distribution id and bucket name are in `amplify_outputs.json` under `custom.frontendDistributionId` and `custom.frontendBucketName`.
+  - Check that the distribution is gone from the [CloudFront console](https://console.aws.amazon.com/cloudfront/v4/home#/distributions) and the bucket is gone from the [S3 console](https://s3.console.aws.amazon.com/s3/buckets/). If either remains, remove it manually.
+
+- **EC2 deployment environment** — if you deployed from an AWS environment (the Amazon Linux 2023 EC2 instance described in the [Prerequisites](#operating-system)) instead of running locally, terminate that instance when you are finished so it stops incurring charges. Terminate it from the [EC2 console](https://console.aws.amazon.com/ec2/home#Instances:) (select the instance → Instance state → Terminate instance).
 
 
 ## FAQ, known issues, additional considerations, and limitations 
