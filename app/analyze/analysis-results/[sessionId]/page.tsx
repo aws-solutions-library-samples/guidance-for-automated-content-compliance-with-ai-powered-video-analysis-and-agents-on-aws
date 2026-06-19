@@ -2,13 +2,15 @@ import { Suspense } from 'react';
 import AnalysisResultsClient from './AnalysisResultsClient';
 
 // This is a dynamic route (`[sessionId]`). For a static export (`output: 'export'`)
-// Next.js requires `generateStaticParams`. The session IDs aren't known at build
-// time — they're created at runtime — so we don't pre-render any specific pages
-// here. CloudFront serves `index.html` as a fallback for these deep links (see the
-// SPA error responses in amplify/frontend-hosting/resources.ts) and the client
-// component below reads the sessionId from the URL via `useParams()`.
+// Next.js requires `generateStaticParams` to return at least one entry — an empty
+// array is rejected as "missing" in Next 14. Real session IDs are created at
+// runtime and aren't known at build time, so we emit a single throwaway page.
+// Actual deep links (e.g. /analyze/analysis-results/<realId>) are served by the
+// CloudFront SPA fallback (403/404 -> /index.html, see
+// amplify/frontend-hosting/resources.ts) and the client component reads the
+// sessionId from the URL via `useParams()`.
 export function generateStaticParams() {
-  return [];
+  return [{ sessionId: 'placeholder' }];
 }
 
 // `AnalysisResultsClient` uses `useSearchParams()`, which must be wrapped in a
