@@ -48,10 +48,10 @@ Automate content compliance with AI-powered video analysis that transforms hours
 ##### How it Works
 
 1. **Configure** your analysis settings on the Config page. Choose which Bedrock models to use for video and frame analysis, adjust inference parameters (temperature, topP, maxTokens), set the pHash threshold for frame deduplication, and select house rating categories. These settings are used by the rest of the solution.
-  ![Config Page](assets/config-page.jpg)
+  ![Config Page](docs/images/config-page.jpg)
 
 2. **Upload** an MP4 video on the Analyze page and select a content type (Film, Episodic, Trailer, Music Video, News). The content type determines the default frames-per-second rate used for frame extraction, as configured on the Config page.
-![Analyze Page](assets/analyze-page.jpg)
+![Analyze Page](docs/images/analyze-page.jpg)
 
 3. An S3 upload event triggers an **AWS Step Functions workflow** that orchestrates the full pipeline:
    - **MediaConvert** generates HLS playback assets and thumbnail frames.
@@ -62,18 +62,18 @@ Automate content compliance with AI-powered video analysis that transforms hours
    - A **general and detailed compliance report** is generated.
 
 4. **View results** on the Analysis Results page with video playback, segment-level findings, frame annotations, transcript, agent reports, and cost breakdown.  
-![Analysis Results - Video](assets/analysis-results-video-page.jpg)  
-![Analysis Results - Timeline](assets/analysis-results-timeline-page.jpg)  
-![Analysis Cost](assets/analysis-results-cost-page.jpg)  
+![Analysis Results - Video](docs/images/analysis-results-video-page.jpg)  
+![Analysis Results - Timeline](docs/images/analysis-results-timeline-page.jpg)  
+![Analysis Cost](docs/images/analysis-results-cost-page.jpg)  
 
 All processing happens in the background. You can navigate away and find completed results in the History page.
 
-![History Page](assets/history-page.jpg)
+![History Page](docs/images/history-page.jpg)
 
-![Statistics Page](assets/statistics-page.jpg)
+![Statistics Page](docs/images/statistics-page.jpg)
 
 ##### Architecture Diagram
-![Architecture](assets/architecture.png)
+![Architecture](docs/images/architecture.png)
 
 #### Pages
 
@@ -268,7 +268,7 @@ For CI/CD deployment via AWS Amplify Hosting, connect your repository in the [Am
 
 MIMIR is a MAM (Media Asset Management) system that supports "custom actions" — configurable menu items that appear on assets in the MIMIR UI. When a user right-clicks an asset and selects a custom action, MIMIR invokes an API endpoint in your AWS account with details about the selected asset(s) to run the compliance workflow and report results back into the MAM.
 
-![MIMIR Compliance Integration](assets/mimir-compliance-integration.jpg)
+![MIMIR Compliance Integration](docs/images/mimir-compliance-integration.jpg)
 
 > **Note:** The current Mimir integration is a proof of concept developed with very restricted access to the Mimir tool. The code can be optimized further if you have full control over Mimir environment and permissions.
 

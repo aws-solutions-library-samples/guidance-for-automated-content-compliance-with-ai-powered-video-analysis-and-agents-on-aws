@@ -1,0 +1,340 @@
+MEDIA RIGHTS AND CLEARANCE DATABASE
+
+=== COUNTRY MUSIC VIDEO ===
+* Asset ID: MV001
+* Title: Country Music Video
+* Production Company: M&E Demo Productions
+* Type: Music Video
+* Song: Country Song
+* Artist: Country Artist
+* File Name: country_music_enUS.mp4
+* Rights Status: Cleared
+* Description: Music Video for Compliance Demo
+* Owner: Amazon Web Services
+* Key Contacts: Vince Palazzo and Alen Zograbyan
+* License/Permission Details: Exclusive use for M&E Industry events and recorded demos
+* License Fee: Cost associated with the usage
+* Clearance Status: Cleared
+* Expiration Date: July 13, 2027
+* Restrictions: Do not edit original
+* Territory Rights: Approved for distribution in US, EMEA, LATAM, but not in APJ
+
+=== COUNTRY MUSIC VIDEO - JAPANESE VERSION ===
+* Asset ID: MV001-JP
+* Title: Country Music Video - Japanese Version
+* Production Company: M&E Demo Productions
+* Type: Music Video
+* Song: Country Song
+* Artist: Country Artist
+* Language: Japanese
+* File Name: country_music_jaJP.mp4
+* Rights Status: Cleared
+* Description: Japanese localized version of Country Music Video for Compliance Demo
+* Owner: Amazon Web Services
+* Key Contacts: Vince Palazzo and Alen Zograbyan and Chris Gillespie
+* License/Permission Details: For use at M&E Industry events and recorded demos
+* License Fee: Cost associated with the usage
+* Clearance Status: Cleared
+* Expiration Date: July 13, 2027
+* Restrictions: Do not edit original, Japanese language version only
+* Territory Rights: Approved for distribution in APJ, EMEA, US, but not in LATAM
+
+=== EVIL SANTA TRAILER ===
+* Asset ID: TR001
+* Title: Evil Santa
+* Production Company: Intelligent Archive Productions
+* Type: Trailer
+* File Name: evil_santa_trailer_enUS.mp4
+* Rights Status: Cleared
+* Description: Promotional trailer for Clown Santa film
+* Owner: Amazon Web Services
+* Key Contacts: Vince Palazzo and Alen Zograbyan
+* License/Permission Details: Approved for Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2027
+* Restrictions: Demo usage only, no commercial distribution
+* Territory Rights: Approved for distribution in EMEA, US, but not in LATAM, APJ
+
+=== EVIL SANTA TRAILER - ITALIAN VERSION ===
+* Asset ID: TR002
+* Title: Evil Santa
+* Production Company: Intelligent Archive Productions
+* Type: Trailer
+* File Name: evil_santa_trailer_IT.mp4
+* Rights Status: Cleared
+* Description: Promotional trailer for Clown Santa film
+* Owner: Amazon Web Services
+* Key Contacts: Vince Palazzo and Alen Zograbyan and Chris Gillespie
+* License/Permission Details: Approved for Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 25, 2027
+* Restrictions: Demo usage only, no commercial distribution
+* Territory Rights: Approved for distribution in EMEA, US, LATAM, APJ
+
+=== HUNTERS SEASON 1 EPISODE 1 ===
+* Asset ID: EP001
+* Title: Hunters
+* Season: 1
+* Episode: 1
+* Production Company: Amazon Studios
+* Type: Episodic Content
+* File Name: hunters_s1e1_enUS.mp4
+* Rights Status: Cleared
+* Description: Ninth episode of Hunters Season 1
+* Owner: Amazon Studios
+* Key Contacts: Amazon Studios
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2025
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA, LATAM, APJ
+
+=== HUNTERS SEASON 1 EPISODE 9 ===
+* Asset ID: EP002
+* Title: Hunters
+* Season: 1
+* Episode: 9
+* Production Company: Amazon Studios
+* Type: Episodic Content
+* File Name: hunters_s1e9_enUS.mp4
+* Rights Status: Cleared
+* Description: Ninth episode of Hunters Season 1
+* Owner: Amazon Studios
+* Key Contacts: Amazon Studios
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2025
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA, LATAM, APJ
+
+=== MAN IN THE HIGH CASTLE SEASON 4 EPISODE 1 ===
+* Asset ID: EP003
+* Title: Man in the High Castle
+* Season: 4
+* Episode: 1
+* Production Company: Amazon Studios
+* Type: Episodic Content
+* File Name: man_in_the_high_castle_s4e1_enUS.mp4
+* Rights Status: Cleared
+* Description: First episode of Man in the High Castle Season 4
+* Owner: Amazon Studios
+* Key Contacts: Amazon Studios
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2025
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA, but not in LATAM, APJ
+
+=== MAN IN THE HIGH CASTLE SEASON 4 EPISODE 2 ===
+* Asset ID: EP004
+* Title: Man in the High Castle
+* Season: 4
+* Episode: 2
+* Production Company: Amazon Studios
+* Type: Episodic Content
+* File Name: man_in_the_high_castle_s4e2_enUS.mp4
+* Rights Status: Cleared
+* Description: Second episode of Man in the High Castle Season 4
+* Owner: Amazon Studios
+* Key Contacts: Amazon Studios
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2025
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA, but not in LATAM, APJ
+
+=== MAN IN THE HIGH CASTLE SEASON 4 EPISODE 3 ===
+* Asset ID: EP005
+* Title: Man in the High Castle
+* Season: 4
+* Episode: 3
+* Production Company: Amazon Studios
+* Type: Episodic Content
+* File Name: man_in_the_high_castle_s4e3_enUS.mp4
+* Rights Status: Cleared
+* Description: Third episode of Man in the High Castle Season 4
+* Owner: Amazon Studios
+* Key Contacts: Amazon Studios
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2025
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA, LATAM, APJ
+
+=== GOLIATH SEASON 2 EPISODE 1 ===
+* Asset ID: EP008
+* Title: Goliath
+* Season: 2
+* Episode: 1
+* Production Company: Amazon Studios
+* Type: Episodic Content
+* File Name: goliath_s2e1_enUS.mp4
+* Rights Status: Cleared
+* Description: First episode of Goliath Season 2
+* Owner: Amazon Studios
+* Key Contacts: Amazon Studios
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2026
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA
+
+=== GOLIATH SEASON 2 EPISODE 3 ===
+* Asset ID: EP010
+* Title: Goliath
+* Season: 2
+* Episode: 3
+* Production Company: Amazon Studios
+* Type: Episodic Content
+* File Name: goliath_s2e3_enUS.mp4
+* Rights Status: Cleared
+* Description: Third episode of Goliath Season 2
+* Owner: Amazon Studios
+* Key Contacts: Amazon Studios
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2026
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA
+
+=== HUNTERS SEASON 1 EPISODE 8 ===
+* Asset ID: EP009
+* Title: Hunters
+* Season: 1
+* Episode: 8
+* Production Company: Amazon Studios
+* Type: Episodic Content
+* File Name: hunters_s1e8_enUS.mp4
+* Rights Status: Cleared
+* Description: Eigth episode of Hunters Season 1
+* Owner: Amazon Studios
+* Key Contacts: Amazon Studios
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2027
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA, LATAM
+
+=== CONGRESSIONAL HEARING 1 ===
+* Asset ID: NEWS001
+* Title: Congressional Hearing 1
+* Season: 0
+* Episode: 0
+* Production Company: Amazon Studios
+* Type: News Content
+* File Name: congressional_hearing1_enUS.mp4
+* Rights Status: Cleared
+* Description: Congressional Hearing on Social Media
+* Owner: Public Hearing
+* Key Contacts: N/A
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2027
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA
+
+=== CONGRESSIONAL HEARING 2 ===
+* Asset ID: NEWS002
+* Title: Congressional Hearing 2
+* Season: 0
+* Episode: 0
+* Production Company: Amazon Studios
+* Type: News Content
+* File Name: congressional_hearing2_enUS.mp4
+* Rights Status: Cleared
+* Description: Congressional Hearing on Social Media
+* Owner: Public Hearing
+* Key Contacts: N/A
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2027
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA
+
+=== CONGRESSIONAL HEARING 3 ===
+* Asset ID: NEWS003
+* Title: TikTok Congressional Hearing 3
+* Season: 0
+* Episode: 0
+* Production Company: Amazon Studios
+* Type: News Content
+* File Name: congressional_hearing3_enUS.mp4
+* Rights Status: Cleared
+* Description: Congressional Hearing on Social Media
+* Owner: Public Hearing
+* Key Contacts: N/A
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2027
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA
+
+=== PATRIOT SEASON 1 EPISODE 1 ===
+* Asset ID: EP011
+* Title: Patriot Season 1 Episode 1
+* Season: 1
+* Episode: 1
+* Production Company: Amazon Studios
+* Type: Episodic Content
+* File Name: patriot_s1e1_enUS.mp4
+* Rights Status: Cleared
+* Description: First episode of Patriot Season 1
+* Owner: Amazon Studios
+* Key Contacts: Amazon Studios
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2027
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA
+
+=== PATRIOT SEASON 1 EPISODE 7 ===
+* Asset ID: EP012
+* Title: Patriot Season 1 Episode 7
+* Season: 1
+* Episode: 7
+* Production Company: Amazon Studios
+* Type: Episodic Content
+* File Name: patriot_s1e7_enUS.mp4
+* Rights Status: Cleared
+* Description: Seventh episode of Patriot Season 1
+* Owner: Amazon Studios
+* Key Contacts: Amazon Studios
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2027
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA
+
+=== PATRIOT SEASON 2 EPISODE 4 ===
+* Asset ID: EP013
+* Title: Patriot Season 2 Episode 4
+* Season: 2
+* Episode: 4
+* Production Company: Amazon Studios
+* Type: Episodic Content
+* File Name: patriot_s2e4_enUS.mp4
+* Rights Status: Cleared
+* Description: Fourth episode of Patriot Season 2
+* Owner: Amazon Studios
+* Key Contacts: Amazon Studios
+* License/Permission Details: Approved for NAB Demo usage
+* License Fee: Internal usage - no external fees
+* Clearance Status: Cleared
+* Expiration Date: December 31, 2027
+* Restrictions: Demo usage only, no public distribution without additional clearance
+* Territory Rights: Approved for distribution in US, EMEA

@@ -1,0 +1,144 @@
+MAM Manifest
+
+1. **Country Music Video**
+   Asset ID: MV001
+   Song: Country Song
+   Artist: Country Artist
+   File Name: country_music_enUS.mp4
+   Type: Music Video
+
+2. **Country Music Video - Japanese Version**
+   Asset ID: MV001-JP
+   Song: Country Song
+   Artist: Country Artist
+   File Name: country_music_jaJP.mp4
+   Type: Music Video
+   Language: Japanese
+
+3. **Evil Santa Trailer**
+   Asset ID: TR001
+   Title: Evil Santa
+   Type: Trailer
+   Owner: Amazon Web Services
+   Usage: IBC Demo
+   File Name: evil_santa_trailer_enUS.mp4
+
+4. **Evil Santa Trailer - Italian Version**
+   Asset ID: TR002
+   Title: Evil Santa
+   Type: Trailer
+   Owner: Amazon Web Services
+   Usage: IBC Demo
+   File Name: evil_santa_trailer_IT.mp4
+
+5. **Hunters Season 1 Episode 9**
+   Asset ID: EP001
+   Title: Hunters
+   Season: 1
+   Episode: 9
+   Type: Episodic Content
+   File Name: hunters_s1e9_enUS.mp4
+
+6. **Hunters Season 1 Episode 1**
+   Asset ID: EP002
+   Title: Hunters
+   Season: 1
+   Episode: 1
+   Type: Episodic Content
+   File Name: hunters_s1e1_enUS.mp4
+
+7. **Man in the High Castle Season 4 Episode 1**
+   Asset ID: EP003
+   Title: Man in the High Castle
+   Season: 4
+   Episode: 1
+   Type: Episodic Content
+   File Name: man_in_the_high_castle_s4e1_enUS.mp4
+
+8. **Man in the High Castle Season 4 Episode 2**
+   Asset ID: EP004
+   Title: Man in the High Castle
+   Season: 4
+   Episode: 2
+   Type: Episodic Content
+   File Name: man_in_the_high_castle_s4e2_enUS.mp4
+
+9. **Man in the High Castle Season 4 Episode 3**
+   Asset ID: EP005
+   Title: Man in the High Castle
+   Season: 4
+   Episode: 3
+   Type: Episodic Content
+   File Name: man_in_the_high_castle_s4e3_enUS.mp4
+
+12. **Goliath Season 2 Episode 1**
+    Asset ID: EP008
+    Title: Goliath
+    Season: 2
+    Episode: 1
+    Type: Episodic Content
+    File Name: goliath_s2e1_enUS.mp4
+
+13. **Hunters Season 1 Episode 8**
+    Asset ID: EP009
+    Title: Hunters
+    Season: 1
+    Episode: 8
+    Type: Episodic Content
+    File Name: hunters_s1e8_enUS.mp4
+
+14. **Goliath Season 2 Episode 3**
+    Asset ID: EP010
+    Title: Goliath
+    Season: 2
+    Episode: 3
+    Type: Episodic Content
+    File Name: goliath_s2e3_enUS.mp4
+
+15. **Congressional Hearing 1**
+    Asset ID: NEWS001
+    Title: Congressional Hearing 1
+    Season: 0
+    Episode: 0
+    Type: News Content
+    File Name: ongressional_hearing1_enUS.mp4
+
+16. **Congressional Hearing 2**
+    Asset ID: NEWS002
+    Title: Congressional Hearing 2
+    Season: 0
+    Episode: 0
+    Type: News Content
+    File Name: congressional_hearing2_enUS.mp4
+
+17. **Congressional Hearing 3**
+    Asset ID: NEWS003
+    Title: Congressional Hearing 3
+    Season: 0
+    Episode: 0
+    Type: News Content
+    File Name: congressional_hearing3_enUS.mp4
+
+18. **Patriot Season 1 Episode 1**
+    Asset ID: EP011
+    Title: Patriot
+    Season: 1
+    Episode: 1
+    Type: Episodic Content
+    File Name: patriot_s1e1_enUS.mp4
+
+18. **Patriot Season 1 Episode 7**
+    Asset ID: EP012
+    Title: Patriot
+    Season: 1
+    Episode: 7
+    Type: Episodic Content
+    File Name: patriot_s1e7_enUS.mp4
+
+20. **Patriot Season 2 Episode 4**
+    Asset ID: EP013
+    Title: Patriot
+    Season: 2
+    Episode: 4
+    Type: Episodic Content
+    File Name: patriot_s2e4_enUS.mp4

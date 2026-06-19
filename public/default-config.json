@@ -1,0 +1,55 @@
+{
+  "houseCategories": [
+    "Abuse or Bullying", 
+    "Adult or Sensitive Themes", 
+    "Animal Abuse or Cruelty", 
+    "Blood and Gore", 
+    "Impactful or Distressing Content", 
+    "Criminal Acts", 
+    "Discrimination or Hate Speech", 
+    "Horror, Fear, or Exorcism Themes", 
+    "Mass Casualty Event", 
+    "Medical or Surgery Footage", 
+    "Mental Health", 
+    "Nudity", 
+    "Outdated Attitudes", 
+    "Fear or Peril", 
+    "Photosensitivity, Strobe Lights", 
+    "Predatory Animal Behavior", 
+    "Pregnancy/Child Loss", 
+    "School Shooting", 
+    "Self-Harm", 
+    "Sexual or Relationship Abuse", 
+    "Violence", 
+    "War", 
+    "Substance Abuse", 
+    "Gambling", 
+    "Suicide References"
+  ],
+  "defaultGeneralReportConfig": {
+    "bedrockModelId": "us.amazon.nova-pro-v1:0",
+    "inferenceConfig": {
+      "maxTokens": 10000,
+      "topP": 0.3,
+      "temperature": 0.3,
+      "topK": 50
+    }
+  },
+  "defaultDetailedReportConfig": {
+    "bedrockModelId": "global.anthropic.claude-sonnet-4-6",
+    "inferenceConfig": {
+      "maxTokens": 10000,
+      "topP": 0.3,
+      "temperature": 0.3,
+      "topK": 50
+    },
+    "phashThreshold": 35
+  },
+  "defaultFramesPerSecond": {
+    "Music Video": 3,
+    "Trailer": 1,
+    "Film": 1,
+    "Episodic": 1,
+    "News": 1
+  }
+}

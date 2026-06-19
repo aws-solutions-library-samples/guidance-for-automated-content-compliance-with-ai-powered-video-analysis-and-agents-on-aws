@@ -1,0 +1,1070 @@
+{
+  "hunters_s1e1_enUS.mp4": {
+    "title": "Hunters",
+    "season": 1,
+    "episode": 1,
+    "imdb_id": "tt8134470",
+    "parentsGuide": [
+      {
+        "category": "Sex & Nudity",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 2,
+          "mildVotes": 4,
+          "moderateVotes": 8,
+          "severeVotes": 1
+        },
+        "parentsGuideItems": [
+          {
+            "text": "An older woman is seen stripping naked and stepping into the shower.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Violence & Gore",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 1,
+          "moderateVotes": 3,
+          "severeVotes": 12
+        },
+        "parentsGuideItems": [
+          {
+            "text": "The dead body of a woman is shown in a flashback in the hands of a man; the man is shot in the neck by a Nazi. While no blood is shown, this is still extremely disturbing.",
+            "isSpoiler": false
+          },
+          {
+            "text": "A Nazi chemist is shown getting into her shower fully nude and beginning to suffocate as gas begins to flow from her showerhead. It is stated that she fell due to the gas and caved in her head, but this isn't shown.",
+            "isSpoiler": false
+          },
+          {
+            "text": "A man is stabbed in the back of the neck with a knife that exits from his throat. Some blood is shown when the knife is pulled out but this is brief.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 1,
+          "mildVotes": 2,
+          "moderateVotes": 4,
+          "severeVotes": 9
+        },
+        "parentsGuideItems": [
+          {
+            "text": "Strong language throughout including f-word and other profanity used regularly in dialogue.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Alcohol, Drugs & Smoking",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 3,
+          "mildVotes": 5,
+          "moderateVotes": 7,
+          "severeVotes": 1
+        },
+        "parentsGuideItems": [
+          {
+            "text": "The main character is seen selling dime bags of marijuana.",
+            "isSpoiler": false
+          },
+          {
+            "text": "Characters smoke cigarettes and drink alcohol as typical for the era.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Frightening & Intense Scenes",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 2,
+          "moderateVotes": 4,
+          "severeVotes": 10
+        },
+        "parentsGuideItems": [
+          {
+            "text": "Extremely disturbing Holocaust imagery and Nazi themes with graphic depictions of Nazi atrocities.",
+            "isSpoiler": false
+          },
+          {
+            "text": "Intense psychological thriller elements with suspenseful and frightening scenes throughout.",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  },
+  "hunters_s1e8_enUS.mp4": {
+    "title": "Hunters",
+    "season": 1,
+    "episode": 8,
+    "imdb_id": "tt21343370",
+    "parentsGuide": [
+      {
+        "category": "Violence & Gore",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 1,
+          "moderateVotes": 2,
+          "severeVotes": 13
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A man forces another man to shoot an innocent captive, he fires he gun and the captive collapses with no blood shown. He aims the gun at a second one and fires but the camera cuts away..",
+            "isSpoiler": false
+          },
+          {
+            "text": "A man is repeatedly tortured using electric wires, he is shown screaming in pain and even the protagonists note that the torturer is going too far. They stop the torture before it gets too bad.",
+            "isSpoiler": false
+          },
+          {
+            "text": "Two scenes of Nazis being shot off-screen, the guns are seen aiming at their heads and the gunshots are heard although no bodies are ever shown.",
+            "isSpoiler": false
+          },
+          {
+            "text": "A man begins punching a second man repeatedly while in a car before beginning to strangle him with a seatbelt; the man then proceeds to kick him numerous times in the head, killing him. Not gory but some blood is shown around his face as he dies.",
+            "isSpoiler": true
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 1,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Alcohol, Drugs & Smoking",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Frightening & Intense Scenes",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 1
+        },
+        "parentsGuideItems": [
+          {
+            "text": "Several intense scenes of characters needing to come to terms with their own morality. Very upsetting to watch.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Sex & Nudity",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  },
+  "hunters_s1e9_enUS.mp4": {
+    "title": "Hunters",
+    "season": 1,
+    "episode": 9,
+    "imdb_id": "tt8134470",
+    "parentsGuide": [
+      {
+        "category": "Violence & Gore",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 1,
+          "moderateVotes": 2,
+          "severeVotes": 13
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A man dismembers a body with a chainsaw.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 1,
+          "mildVotes": 3,
+          "moderateVotes": 8,
+          "severeVotes": 4
+        },
+        "parentsGuideItems": [
+          {
+            "text": "Continued strong language throughout the episode. F-word and other strong profanity used regularly.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Alcohol, Drugs & Smoking",
+        "severity": "Mild",
+        "votes": {
+          "noneVotes": 4,
+          "mildVotes": 8,
+          "moderateVotes": 3,
+          "severeVotes": 1
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Frightening & Intense Scenes",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 1,
+          "moderateVotes": 3,
+          "severeVotes": 12
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A character in the hospital is seen flatlining, slightly upsetting.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Sex & Nudity",
+        "severity": "Mild",
+        "votes": {
+          "noneVotes": 6,
+          "mildVotes": 7,
+          "moderateVotes": 2,
+          "severeVotes": 1
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  },
+  "man_in_the_high_castle_s4e3_enUS.mp4": {
+    "title": "The Man in the High Castle",
+    "season": 4,
+    "episode": 3,
+    "imdb_id": "tt1740299",
+    "parentsGuide": [
+      {
+        "category": "Violence & Gore",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 1,
+          "mildVotes": 4,
+          "moderateVotes": 8,
+          "severeVotes": 3
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A man in the back seat of a car attempts to suffocate a woman with a plastic bag from behind.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Alcohol, Drugs & Smoking",
+        "severity": "M",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Frightening & Intense Scenes",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 1
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Sex & Nudity",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 1,
+          "mildVotes": 1,
+          "moderateVotes": 4,
+          "severeVotes": 1
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A man is seen in a club with numerous topless women walking about.",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  },
+  "goliath_s2e3_enUS.mp4": {
+    "title": "Goliath",
+    "season": 2,
+    "episode": 3,
+    "imdb_id": "tt174111291",
+    "parentsGuide": [
+      {
+        "category": "Sex & Nudity",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 1,
+          "mildVotes": 1,
+          "moderateVotes": 4,
+          "severeVotes": 1
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A woman opens her shirt to check her bruised arm, revealing her bra.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Violence & Gore",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Alcohol, Drugs & Smoking",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Frightening & Intense Scenes",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  },
+  "mihc_1_enUS.mp4": {
+    "title": "The Man in the High Castle",
+    "season": 4,
+    "episode": 3,
+    "imdb_id": "tt174101199",
+    "parentsGuide": [
+      {
+        "category": "Sex & Nudity",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Violence & Gore",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 2,
+          "severeVotes": 8
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A man in the back seat of a car attempts to suffocate a woman with a plastic bag from behind.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Alcohol, Drugs & Smoking",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Frightening & Intense Scenes",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  },
+  "the_better_sister_s1e1_enUS.mp4": {
+    "title": "The Better Sister",
+    "season": 1,
+    "episode": 1,
+    "imdb_id": "tt8134970",
+    "parentsGuide": [
+      {
+        "category": "Sex & Nudity",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 1,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "An woman is shown in a backless dress.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Violence & Gore",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 1,
+          "moderateVotes": 3,
+          "severeVotes": 12
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A dead body is shown on the ground.",
+            "isSpoiler": false
+          },
+          {
+            "text": "A woman has blood on her shirt.",
+            "isSpoiler": false
+          },
+          {
+            "text": "A woman is seen with a knife",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 1,
+          "mildVotes": 2,
+          "moderateVotes": 4,
+          "severeVotes": 9
+        },
+        "parentsGuideItems": [
+          {
+            "text": "Profanity used regularly in dialogue.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Alcohol, Drugs & Smoking",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 2,
+          "mildVotes": 2,
+          "moderateVotes": 1,
+          "severeVotes": 1
+        },
+        "parentsGuideItems": [
+          {
+            "text": "Drinks are seen on a table at a party",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  },
+  "hunters_test_enUS.mp4": {
+    "title": "Hunters",
+    "season": 1,
+    "episode": 1,
+    "imdb_id": "tt8134371",
+    "parentsGuide": [
+      {
+        "category": "Violence & Gore",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 1,
+          "moderateVotes": 3,
+          "severeVotes": 12
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A man dismembers a body with a chainsaw.",
+            "isSpoiler": false
+          },
+          {
+            "text": "A woman pulls a gun and point it at a driver",
+            "isSpoiler": false
+          },
+          {
+            "text": "A car crash with a vehicle falling off a bridge",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 1,
+          "mildVotes": 2,
+          "moderateVotes": 4,
+          "severeVotes": 9
+        },
+        "parentsGuideItems": [
+          {
+            "text": "Profanity used regularly in dialogue.",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  },
+  "mihc_4e3_enUS.mp4": {
+    "title": "The Man in the High Castle",
+    "season": 4,
+    "episode": 3,
+    "imdb_id": "tt17410299",
+    "parentsGuide": [
+      {
+        "category": "Sex & Nudity",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 1,
+          "mildVotes": 1,
+          "moderateVotes": 4,
+          "severeVotes": 1
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A man is seen in a club with numerous topless women walking about.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Violence & Gore",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 2,
+          "severeVotes": 8
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A man in the back seat of a car attempts to suffocate a woman with a plastic bag from behind.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Alcohol, Drugs & Smoking",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Frightening & Intense Scenes",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  },
+  "mihc_1_enUS.mp4": {
+    "title": "The Man in the High Castle",
+    "season": 4,
+    "episode": 3,
+    "imdb_id": "tt174101199",
+    "parentsGuide": [
+      {
+        "category": "Sex & Nudity",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Violence & Gore",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 2,
+          "severeVotes": 8
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A man in the back seat of a car attempts to suffocate a woman with a plastic bag from behind.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Alcohol, Drugs & Smoking",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Frightening & Intense Scenes",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  },
+  "patriot_s2e4_enUS.mp4": {
+    "title": "Patriot",
+    "season": 2,
+    "episode": 4,
+    "imdb_id": "tt171100299",
+    "parentsGuide": [
+      {
+        "category": "Sex & Nudity",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Violence & Gore",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 2,
+          "severeVotes": 8
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A female police detective is hit in the head by a convenience store shelf numerous times, blinded and later seen needing a guide to help her get wherever she has to go.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Alcohol, Drugs & Smoking",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "Opening scene has kids in fake beards purchasing beer",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Frightening & Intense Scenes",
+        "severity": "",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 0,
+          "moderateVotes": 0,
+          "severeVotes": 0
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A bloody detatched finger is seen",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  },
+  "example_comprehensive_enUS.mp4": {
+    "title": "Example Comprehensive Show",
+    "season": 1,
+    "episode": 1,
+    "imdb_id": "tt9999999",
+    "parentsGuide": [
+      {
+        "category": "Sex & Nudity",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 2,
+          "mildVotes": 3,
+          "moderateVotes": 8,
+          "severeVotes": 2
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A couple is shown kissing passionately in bed, with brief partial nudity.",
+            "isSpoiler": false
+          },
+          {
+            "text": "Sexual references and innuendo throughout the episode.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Violence & Gore",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 1,
+          "moderateVotes": 4,
+          "severeVotes": 15
+        },
+        "parentsGuideItems": [
+          {
+            "text": "A character is shot multiple times with blood visible on clothing and walls.",
+            "isSpoiler": false
+          },
+          {
+            "text": "Intense fight scene with weapons including knives and guns.",
+            "isSpoiler": false
+          },
+          {
+            "text": "A car explosion with characters inside, very disturbing.",
+            "isSpoiler": true
+          }
+        ]
+      },
+      {
+        "category": "Profanity",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 1,
+          "mildVotes": 2,
+          "moderateVotes": 3,
+          "severeVotes": 12
+        },
+        "parentsGuideItems": [
+          {
+            "text": "Frequent use of strong language including f-word used over 20 times.",
+            "isSpoiler": false
+          },
+          {
+            "text": "Other strong profanity and crude language used throughout.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Alcohol, Drugs & Smoking",
+        "severity": "Moderate",
+        "votes": {
+          "noneVotes": 3,
+          "mildVotes": 4,
+          "moderateVotes": 9,
+          "severeVotes": 2
+        },
+        "parentsGuideItems": [
+          {
+            "text": "Characters are shown drinking alcohol heavily at a party.",
+            "isSpoiler": false
+          },
+          {
+            "text": "Drug dealing and drug use depicted including cocaine and marijuana.",
+            "isSpoiler": false
+          },
+          {
+            "text": "Multiple characters smoke cigarettes throughout the episode.",
+            "isSpoiler": false
+          }
+        ]
+      },
+      {
+        "category": "Frightening & Intense Scenes",
+        "severity": "Severe",
+        "votes": {
+          "noneVotes": 0,
+          "mildVotes": 2,
+          "moderateVotes": 5,
+          "severeVotes": 13
+        },
+        "parentsGuideItems": [
+          {
+            "text": "Extremely tense hostage situation that lasts for several minutes.",
+            "isSpoiler": false
+          },
+          {
+            "text": "Jump scares and psychological horror elements throughout.",
+            "isSpoiler": false
+          },
+          {
+            "text": "Disturbing themes involving child endangerment and family trauma.",
+            "isSpoiler": false
+          }
+        ]
+      }
+    ]
+  }
+}
