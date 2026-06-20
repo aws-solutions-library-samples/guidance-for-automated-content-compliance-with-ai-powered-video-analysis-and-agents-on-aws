@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2026-06-18
+
+### Added
+- Added Claude Opus 4.7 and Opus 4.8 as frame analysis options
+
+### Changed
+- Opus 4.7 and 4.8 do not use the `temperature`, `top_p`, or `top_k` sampling parameters (the models have deprecated them); they are omitted from frame analysis requests and hidden in the Config page for these models
+
 ## [1.3.0] - 2026-03-31
 
 ### Added

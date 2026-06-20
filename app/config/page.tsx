@@ -30,7 +30,7 @@ import ModelSelector from '../../components/model-selector/model-selector';
 import { useSelector, useDispatch } from 'react-redux';
 import { IConfigStateReducer } from '../../store/config';
 import { configStoreActions } from '../../store/config';
-import { CONTENT_TYPES, vars, BedrockModality, modelSupportsTemperature } from '../../amplify/global-variables';
+import { CONTENT_TYPES, vars, BedrockModality, modelSupportsSamplingParams } from '../../amplify/global-variables';
 
 interface InferenceConfig {
   maxTokens: number;
@@ -454,32 +454,34 @@ export default function ConfigPage() {
                 onChange={(e) => updateInferenceConfig('defaultDetailedReportConfig', 'maxTokens', parseInt(e.target.value))}
                 sx={{ flex: 1, minWidth: 120 }}
               />
-              <TextField
-                label="Top P"
-                type="number"
-                inputProps={{ step: 0.1, min: 0.1, max: 1.0 }}
-                value={config.defaultDetailedReportConfig.inferenceConfig.topP}
-                onChange={(e) => updateInferenceConfig('defaultDetailedReportConfig', 'topP', parseFloat(e.target.value))}
-                sx={{ flex: 1, minWidth: 100 }}
-              />
-              {modelSupportsTemperature(config.defaultDetailedReportConfig.bedrockModelId) && (
-                <TextField
-                  label="Temperature"
-                  type="number"
-                  inputProps={{ step: 0.1, min: 0.1, max: 1.0 }}
-                  value={config.defaultDetailedReportConfig.inferenceConfig.temperature}
-                  onChange={(e) => updateInferenceConfig('defaultDetailedReportConfig', 'temperature', parseFloat(e.target.value))}
-                  sx={{ flex: 1, minWidth: 120 }}
-                />
+              {modelSupportsSamplingParams(config.defaultDetailedReportConfig.bedrockModelId) && (
+                <>
+                  <TextField
+                    label="Top P"
+                    type="number"
+                    inputProps={{ step: 0.1, min: 0.1, max: 1.0 }}
+                    value={config.defaultDetailedReportConfig.inferenceConfig.topP}
+                    onChange={(e) => updateInferenceConfig('defaultDetailedReportConfig', 'topP', parseFloat(e.target.value))}
+                    sx={{ flex: 1, minWidth: 100 }}
+                  />
+                  <TextField
+                    label="Temperature"
+                    type="number"
+                    inputProps={{ step: 0.1, min: 0.1, max: 1.0 }}
+                    value={config.defaultDetailedReportConfig.inferenceConfig.temperature}
+                    onChange={(e) => updateInferenceConfig('defaultDetailedReportConfig', 'temperature', parseFloat(e.target.value))}
+                    sx={{ flex: 1, minWidth: 120 }}
+                  />
+                  <TextField
+                    label="Top K"
+                    type="number"
+                    inputProps={{ min: 1 }}
+                    value={config.defaultDetailedReportConfig.inferenceConfig.topK}
+                    onChange={(e) => updateInferenceConfig('defaultDetailedReportConfig', 'topK', parseInt(e.target.value))}
+                    sx={{ flex: 1, minWidth: 100 }}
+                  />
+                </>
               )}
-              <TextField
-                label="Top K"
-                type="number"
-                inputProps={{ min: 1 }}
-                value={config.defaultDetailedReportConfig.inferenceConfig.topK}
-                onChange={(e) => updateInferenceConfig('defaultDetailedReportConfig', 'topK', parseInt(e.target.value))}
-                sx={{ flex: 1, minWidth: 100 }}
-              />
             </Box>
             <Alert severity="warning" sx={{ mt: 3 }}>
               Each model has different parameter min/max values. Selecting values outside the valid range will result in an error when running the analysis.

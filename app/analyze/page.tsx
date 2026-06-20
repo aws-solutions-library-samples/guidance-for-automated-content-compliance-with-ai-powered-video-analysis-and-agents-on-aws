@@ -36,7 +36,7 @@ import { CommonUtils } from '../../amplify/utils';
 import { logMessagesStoreActions } from '../../store/log-output';
 import { ILogMessagesStateReducer } from '../../store/log-output';
 import LogMessages from '../../components/log-output/log-output';
-import { CONTENT_TYPES, BedrockModelIds, vars, modelSupportsTemperature } from '../../amplify/global-variables';
+import { CONTENT_TYPES, BedrockModelIds, vars, modelSupportsSamplingParams } from '../../amplify/global-variables';
 import ModelSelector from '../../components/model-selector/model-selector';
 import { IConfigStateReducer } from '../../store/config';
 import NestedPill from '../../components/nested-pill/nested-pill';
@@ -658,15 +658,15 @@ export default function AnalyzePage() {
                             />
                             <NestedPill 
                               label="Temperature"
-                              value={modelSupportsTemperature(config.defaultDetailedReportConfig?.bedrockModelId) ? (config.defaultDetailedReportConfig?.inferenceConfig?.temperature?.toString() || 'N/A') : 'N/A'}
+                              value={modelSupportsSamplingParams(config.defaultDetailedReportConfig?.bedrockModelId) ? (config.defaultDetailedReportConfig?.inferenceConfig?.temperature?.toString() || 'N/A') : 'N/A'}
                             />
                             <NestedPill 
                               label="Top P"
-                              value={config.defaultDetailedReportConfig?.inferenceConfig?.topP?.toString() || 'N/A'}
+                              value={modelSupportsSamplingParams(config.defaultDetailedReportConfig?.bedrockModelId) ? (config.defaultDetailedReportConfig?.inferenceConfig?.topP?.toString() || 'N/A') : 'N/A'}
                             />
                             <NestedPill 
                               label="Top K"
-                              value={config.defaultDetailedReportConfig?.inferenceConfig?.topK?.toString() || 'N/A'}
+                              value={modelSupportsSamplingParams(config.defaultDetailedReportConfig?.bedrockModelId) ? (config.defaultDetailedReportConfig?.inferenceConfig?.topK?.toString() || 'N/A') : 'N/A'}
                             />
                           </Box>
                         </Paper>

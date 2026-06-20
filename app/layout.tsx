@@ -342,7 +342,7 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
             color: 'rgba(255, 255, 255, 0.5)', 
             fontSize: '0.95rem' 
           }}>
-            version 1.3.0
+            version 1.4.0
           </Typography>
         </Box>
       </MuiDrawer>

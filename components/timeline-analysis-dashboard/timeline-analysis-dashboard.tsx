@@ -27,7 +27,7 @@ import {
 } from 'recharts';
 import TuneIcon from '@mui/icons-material/Tune';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import { vars, modelSupportsTemperature } from '../../amplify/global-variables';
+import { vars, modelSupportsSamplingParams } from '../../amplify/global-variables';
 
 interface TimelineEvent {
   name: string;
@@ -610,7 +610,7 @@ export default function TimelineAnalysisDashboard({ s3Id, onTimestampClick, show
                   Temperature
                 </Typography>
                 <Typography sx={{ color: 'white', fontSize: '14px' }}>
-                  {modelSupportsTemperature(frameAnalysisParams?.frameAnalysisBedrockModelId)
+                  {modelSupportsSamplingParams(frameAnalysisParams?.frameAnalysisBedrockModelId)
                     ? (frameAnalysisParams?.frameAnalysisInferenceTemperature || 'Default')
                     : 'Default'}
                 </Typography>
@@ -620,7 +620,9 @@ export default function TimelineAnalysisDashboard({ s3Id, onTimestampClick, show
                   Top P
                 </Typography>
                 <Typography sx={{ color: 'white', fontSize: '14px' }}>
-                  {frameAnalysisParams?.frameAnalysisInferenceTopP || 'Default'}
+                  {modelSupportsSamplingParams(frameAnalysisParams?.frameAnalysisBedrockModelId)
+                    ? (frameAnalysisParams?.frameAnalysisInferenceTopP || 'Default')
+                    : 'Default'}
                 </Typography>
               </Box>
               <Box>
@@ -628,7 +630,9 @@ export default function TimelineAnalysisDashboard({ s3Id, onTimestampClick, show
                   Top K
                 </Typography>
                 <Typography sx={{ color: 'white', fontSize: '14px' }}>
-                  {frameAnalysisParams?.frameAnalysisInferenceTopK || 'Default'}
+                  {modelSupportsSamplingParams(frameAnalysisParams?.frameAnalysisBedrockModelId)
+                    ? (frameAnalysisParams?.frameAnalysisInferenceTopK || 'Default')
+                    : 'Default'}
                 </Typography>
               </Box>
             </Box>
