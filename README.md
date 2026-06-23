@@ -10,12 +10,11 @@ Automate content compliance with AI-powered video analysis that transforms hours
 2. [Prerequisites](#prerequisites)
 3. [Deployment Steps](#deployment-steps)
 4. [Deployment Validation](#deployment-validation)
-5. [Running the Guidance](#running-the-guidance)
-6. [Next Steps](#next-steps)
-7. [Cleanup](#cleanup)
-8. [FAQ, known issues, additional considerations, and limitations](#faq-known-issues-additional-considerations-and-limitations)
-9. [Notices](#notices)
-10. [Authors](#authors)
+5. [Next Steps](#next-steps)
+6. [Cleanup](#cleanup)
+7. [FAQ, known issues, additional considerations, and limitations](#faq-known-issues-additional-considerations-and-limitations)
+8. [Notices](#notices)
+9. [Authors](#authors)
 
 ## Overview
 
@@ -90,27 +89,85 @@ All processing happens in the background. You can navigate away and find complet
 
 ### Cost
 
-This section is for a high-level cost estimate. Think of a likely straightforward scenario with reasonable assumptions based on the problem the Guidance is trying to solve. Provide an in-depth cost breakdown table in this section below ( you should use AWS Pricing Calculator to generate cost breakdown ).
+_You are responsible for the cost of the AWS services used while running this Guidance. As of June 2026, the cost for running this Guidance in the US West (Oregon) Region is approximately **$330 per month** for processing **50 hours of video** (for example, 50 one-hour titles at 1 frame per second), using Amazon Nova Pro for video (segment) analysis and Amazon Nova 2 Lite for frame analysis. This figure is highly sensitive to the configuration choices described below._
 
-Start this section with the following boilerplate text:
+> ⚠️ Content compliance cost is highly dynamic. The number above is a rough planning estimate, not a quote. Your actual cost depends heavily on the foundation models you select, the frame-analysis frame rate, the pHash deduplication threshold, the type of content (fast-moving footage dedupes less than static footage), how long your videos are, and which optional steps (frame analysis, agents) you enable. Use the in-app **Analysis Cost** tab and **Statistics** page to measure cost against your own content, and [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) for the authoritative bill.
 
-_You are responsible for the cost of the AWS services used while running this Guidance. As of <month> <year>, the cost for running this Guidance with the default settings in the <Default AWS Region (Most likely will be US East (N. Virginia)) > is approximately $<n.nn> per month for processing ( <nnnnn> records )._
+#### What drives cost
 
-Replace this amount with the approximate cost for running your Guidance in the default Region. This estimate should be per month and for processing/serving resonable number of requests/entities.
+The main cost drivers are Amazon Bedrock model usage, Amazon Transcribe, and AWS Elemental MediaConvert. Frame-level analysis is the largest Bedrock line item: it runs the configured model against extracted frames (1 fps by default), so its cost scales with video length, frame rate, how aggressively pHash filters out similar adjacent frames, and the per-token price of the model you choose. The estimate below uses **Amazon Nova 2 Lite** for frame analysis, which is far cheaper than a premium model, frame analysis alone can be up to ~80% of the total. The remaining cost comes from the video (segment-level) analysis, the optional validation agents, Amazon Transcribe, AWS Elemental MediaConvert, and the supporting serverless services that run the pipeline and host the app.
 
-Suggest you keep this boilerplate text:
+#### What changes your cost (and by how much)
+
+Cost can swing by an order of magnitude depending on a few choices. The most important ones, roughly in order of impact:
+
+- **Frame-analysis model — the single biggest lever.** Per-frame price runs from very low to roughly 6–7x that for higher cost models. Changing only this can move the monthly bill from a few hundred to a few thousand dollars.
+- **Frame rate (fps).** Frame-analysis cost scales directly with fps. The default is 1 fps, but the Music Video content type defaults to 3 fps — about 3x the frames and ~3x the frame-analysis cost.
+- **pHash deduplication threshold.** A higher threshold filters out more near-duplicate frames, cutting the number of billable Bedrock calls. Raising it trims cost; lowering it analyzes more frames and costs more.
+- **Content type and motion.** Fast-moving, dynamic footage (sports, music videos, action) dedupes poorly, so more unique frames are analyzed. Static or slow content (news, interviews) dedupes heavily and costs much less for the same duration.
+- **Video length.** The Bedrock, Transcribe, and MediaConvert line items all scale roughly linearly with minutes of video.
+- **Optional steps.** Frame analysis and the validation agents can each be turned off. Skipping frame analysis removes the largest Bedrock line item entirely.
+- **Video (segment) model and inference params.** The segment-analysis model and settings such as `maxTokens` change token volume and therefore cost.
+- **Region and pricing model.** These estimates assume On-Demand pricing in us-west-2. A different Region, Provisioned Throughput, or Batch inference (see below) will change the numbers.
+
+Because of this, treat the figures here as a starting point and measure against your own content using the in-app **Analysis Cost** tab.
+
+#### Illustrative breakdown per hour of video
+
+The table below estimates the cost to process **one hour of video** with a cost-optimized configuration: video (segment) analysis on Amazon Nova Pro, frame analysis on Amazon Nova 2 Lite at 1 fps, and agents enabled. It assumes the pHash threshold is raised slightly above the default so that roughly two-thirds of the extracted frames are filtered out as near-duplicates (about 1,200 frames analyzed per hour). All figures are On-Demand estimates for US West (Oregon) and are rounded.
+
+| Component | Service | Est. cost / hour of video | Notes |
+| --- | --- | --- | --- |
+| Frame analysis | Amazon Bedrock (Amazon Nova 2 Lite, 1 fps) | ~$2–3 | ~1,200 frames/hour after pHash filtering. Scales with frame rate, pHash threshold, content motion, and model choice |
+| Video (segment) analysis | Amazon Bedrock (Amazon Nova Pro) | ~$0.92 | Per hour of video; matches the in-app FAQ benchmark |
+| Validation agents (rights, QC, IMDb, profanity) | Amazon Bedrock (Nova Lite / Nova Pro) | ~$0.20 | Optional; run once per analysis, not per frame |
+| Transcription | Amazon Transcribe | ~$1.44 | Standard batch at $0.024/min ([pricing](https://aws.amazon.com/transcribe/pricing/)) |
+| Media processing | AWS Elemental MediaConvert | ~$1.00–1.40 | One 360p HLS rendition (~$0.45/hr) + frame-capture JPEGs billed per output minute at the source resolution (~$0.45/hr SD to ~$0.90/hr HD). Basic tier AVC ([pricing](https://aws.amazon.com/mediaconvert/pricing/)) |
+| Orchestration, compute, storage, API, auth, hosting | AWS Step Functions, AWS Lambda, Amazon S3, Amazon DynamoDB, AWS AppSync, Amazon API Gateway, Amazon Cognito, Amazon CloudFront | ~$0.40 | Mostly S3 storage of the source video, chunk copies, HLS, frames, and reports (~$0.15/hr). Step Functions transitions are cheap and the frame Lambda is only 128 MB; DynamoDB, AppSync, API Gateway, Cognito, and CloudFront are negligible at this scale |
+| **Total** | | **~$5–7 / hour of video** | |
+
+At a representative **~$6.50 per hour of video**, processing 50 hours per month comes to roughly **$330/month** (the sample table below totals ≈$330). You can push this lower by reducing the frame rate, raising the pHash threshold further, or skipping frame analysis entirely (video-level only), which drops the total to about **~$4 per hour** (~$200/month for the same 50 hours). See the cost-reduction tips in the app's Help page.
+
+#### Can Amazon Bedrock Batch inference lower this?
+
+[Amazon Bedrock Batch inference](https://aws.amazon.com/bedrock/pricing/) runs at 50% of On-Demand pricing, which makes it appealing for the high-volume frame-analysis step. It is **not used by this solution today** — the pipeline calls Bedrock synchronously (`InvokeModel`) inside a Step Functions Distributed Map so results stream back in near real time. Adopting Batch would mean re-architecting frame analysis to write all frames to a JSONL file in Amazon S3, submit an asynchronous job, poll for completion, and parse the S3 output. 
+
+#### Get exact costs for your own content
+
+Because cost is so content-dependent, the most accurate way to estimate it is to run your own media through the app and read the numbers it reports in the UI:
+
+- **Analysis Cost tab — exact cost per video.** After an analysis completes, open the **Analysis Cost** tab on the Analysis Results page to see the precise pricing. 
+
+- **Statistics tab — aggregate cost across your library.** The **Statistics** page rolls up cost and usage across all of your analyses for the current month (total spend, videos processed, total video duration, and a breakdown by model and by provider), which is useful for tracking and forecasting spend over time.
+
+#### Important notes on the in-app cost figures
+
+The cost numbers shown on the **Statistics** page and the **Analysis Cost** tab are estimates that include **only Amazon Bedrock and Amazon Transcribe** usage. They do not include AWS Elemental MediaConvert, Amazon S3, Amazon DynamoDB, AWS Lambda, or AWS Step Functions. In-app pricing is based on On-Demand rates in the us-west-2 Region and is not a production-grade metering system.
+
 _We recommend creating a [Budget](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html) through [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance._
 
 ### Sample Cost Table
 
-**Note : Once you have created a sample cost table using AWS Pricing Calculator, copy the cost breakdown to below table and upload a PDF of the cost estimation on BuilderSpace. Do not add the link to the pricing calculator in the ReadMe.**
+**Note:** The figures below are estimates derived from the per-hour breakdown above. Use them for rough planning only.
 
-The following table provides a sample cost breakdown for deploying this Guidance with the default parameters in the US East (N. Virginia) Region for one month.
+The following table provides a sample monthly cost breakdown for running this Guidance in the US West (Oregon) Region, processing 50 hours of video per month with the cost-optimized configuration described above.
 
-| AWS service  | Dimensions | Cost [USD] |
-| ----------- | ------------ | ------------ |
-| Amazon API Gateway | 1,000,000 REST API calls per month  | $ 3.50month |
-| Amazon Cognito | 1,000 active users per month without advanced security feature | $ 0.00 |
+| AWS service | Dimensions | Cost [USD/month] |
+| --- | --- | --- |
+| Amazon Bedrock — frame analysis | Amazon Nova 2 Lite; ~60,000 frames/month (~1,200/hr after pHash filtering) at 1 fps | $120 |
+| Amazon Bedrock — video (segment) analysis | Amazon Nova Pro; 50 hours of video (~$0.92/hr) | $46 |
+| Amazon Bedrock — validation agents | Nova Lite / Nova Pro; rights, QC, IMDb, profanity, JSON repair | $10 |
+| Amazon Transcribe | Standard batch; 3,000 minutes (50 hours) at $0.024/min | $72 |
+| AWS Elemental MediaConvert | Basic tier AVC; one 360p HLS rendition + frame-capture JPEGs at source resolution; 50 hours | $60 |
+| AWS Step Functions | Standard workflow; ~50 executions; transcript/MediaConvert polling loops + frame Distributed Map (~1,200 child iterations/hr) | $4 |
+| AWS Lambda | Pipeline functions + ~60,000 frame invocations at 128 MB | $5 |
+| Amazon S3 | Source video, HLS, frames, transcripts, reports (~250 GB) | $8 |
+| Amazon DynamoDB | On-demand; jobs, results, statistics, and log tables | $1 |
+| AWS AppSync | GraphQL queries from the web app | $2 |
+| Amazon API Gateway | REST endpoints (Mimir / custom actions) | $1 |
+| Amazon Cognito | < 50 monthly active users | $0.00 |
+| Amazon CloudFront | Static frontend delivery, low traffic | $1 |
+| **Total** | **50 hours of video per month** | **≈ $330** |
 
 ## Prerequisites
 > ⚠️ **IMPORTANT: Ensure the prerequisites are complete before moving onto the deployment steps.**
@@ -314,17 +371,6 @@ This builds a static export of the app, uploads it to the hosting bucket, and in
 - Frontend deployed to: https://<distribution>.cloudfront.net`.
 - Open that URL in your browser. It should redirect to HTTPS and load the same dashboard (allow a few minutes after the first deploy for the distribution and cache invalidation to propagate).
 
-
-## Running the Guidance
-
-<Provide instructions to run the Guidance with the sample data or input provided, and interpret the output received.> 
-
-This section should include:
-
-* Guidance inputs
-* Commands to run
-* Expected output (provide screenshot if possible)
-* Output description
 
 ## Next Steps 
 
