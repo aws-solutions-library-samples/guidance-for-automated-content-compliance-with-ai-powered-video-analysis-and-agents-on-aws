@@ -192,7 +192,7 @@ You will need an environment to run the deployment steps from. This will be your
   ```bash
   sudo dnf install -y git
   ```
-- **Node.js (v18.17+) and npm** — required for the frontend, CDK synthesis, and cross-platform Python Lambda bundling
+- **Node.js (v18.17+) and npm** — required for the frontend, CDK synthesis, and cross-platform Python Lambda bundling. Tested with Node 18 and Node 20. Newer versions have not been tested for compatibility.
   - On Amazon Linux 2023, install using:
   ```bash
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
