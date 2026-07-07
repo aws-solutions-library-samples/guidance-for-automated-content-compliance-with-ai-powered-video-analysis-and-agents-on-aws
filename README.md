@@ -515,7 +515,8 @@ Refer to the list of FAQs in the "Help" section of the application.
 
 **Known issues**
 
-As models become deprecated, they may fail to be used in the app. Replace with newer versions to process media.
+-  In certain environments, Cognito self-service sign-up may be disabled. If you try to register a new user and get the error message "SignUp is not permitted for this user pool", you need to enable self-service sign-up in the Cognito console. Navigate to Cognito > Authentication > Sign-up, and re-enable self-registration.
+-  As models become deprecated, they may fail to be used in the app. Replace with newer versions to process media.
 
 **Additional considerations**
 
