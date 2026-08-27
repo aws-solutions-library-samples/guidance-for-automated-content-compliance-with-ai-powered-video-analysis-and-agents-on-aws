@@ -280,8 +280,14 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-automate
 cd guidance-for-automated-content-compliance-with-ai-powered-video-analysis-and-agents-on-aws
 
 # Note: this command takes some time
-npm ci
+npm install
 ```
+
+> **Note:** Use `npm install`, not `npm ci`. The Amplify backend pulls in the aws-cdk
+> toolchain (e.g. `@aws-cdk/toolkit-lib`), which ships **bundled dependencies** that
+> `npm ci` cannot validate against `package-lock.json`. This makes `npm ci` fail with
+> `EUSAGE: Missing: <package> from lock file`, even on a freshly generated lockfile.
+> `npm install` resolves the identical dependency tree without that error.
 
 #### 2. Set your environment branch
 
