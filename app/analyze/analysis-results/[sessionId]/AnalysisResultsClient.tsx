@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams, useSearchParams, usePathname } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
 import { VideoAnalysisService } from '../../../../services/video-analysis';
 import { StatisticsService } from '../../../../services/statistics';
@@ -55,18 +55,32 @@ const getModelDisplayName = (modelId: string): string => {
 
 export default function AnalysisResultsClient() {
   const params = useParams();
-  // On a static export, every /analyze/analysis-results/* deep link is served the
-  // same prerendered shell (the "placeholder" page — see the CloudFront function in
-  // amplify/frontend-hosting/resources.ts), so useParams() can return that build-time
-  // placeholder instead of the real id. Read the sessionId from the URL, falling back
-  // to the route param (covers local dev and in-app client navigation).
-  const [sessionId] = useState<string>(() => {
-    if (typeof window !== 'undefined') {
-      const lastSegment = window.location.pathname.split('/').filter(Boolean).pop();
-      if (lastSegment) return decodeURIComponent(lastSegment);
-    }
-    return (params.sessionId as string) || '';
-  });
+  const pathname = usePathname();
+  // Resolve the sessionId reactively from the current route.
+  //
+  // Why not a one-time read in a useState initializer (the previous approach): during
+  // App Router client-side navigation the target component can render — and run useState
+  // initializers — before the URL is committed, capturing a stale path (e.g. "/history")
+  // and then permanently querying the wrong id until a manual refresh. That is the
+  // "No analysis results found on navigate, works on refresh" bug.
+  //
+  // Why not useParams() alone: on the static-export deployment every
+  // /analyze/analysis-results/* deep link is served the same prerendered shell (see the
+  // CloudFront function in amplify/frontend-hosting/resources.ts), so useParams() can
+  // return a build-time placeholder instead of the real id.
+  //
+  // Reading window.location.pathname inside an effect keyed on the reactive pathname runs
+  // after navigation commits, so it always sees the real, current id and re-resolves
+  // whenever the route changes.
+  const [sessionId, setSessionId] = useState<string>('');
+  useEffect(() => {
+    const currentPath = typeof window !== 'undefined' ? window.location.pathname : (pathname || '');
+    const lastSegment = currentPath.split('/').filter(Boolean).pop();
+    const resolved = lastSegment && lastSegment !== 'analysis-results'
+      ? decodeURIComponent(lastSegment)
+      : ((params.sessionId as string) || '');
+    if (resolved) setSessionId(resolved);
+  }, [pathname, params.sessionId]);
   const [analysisResult, setAnalysisResult] = useState<IVideoAnalysisHistoryResult | null>(null);
   const [statistics, setStatistics] = useState<IStatistic[]>([]);
   const [loading, setLoading] = useState(true);

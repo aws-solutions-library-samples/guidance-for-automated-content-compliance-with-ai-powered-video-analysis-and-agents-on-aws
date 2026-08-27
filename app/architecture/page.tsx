@@ -147,7 +147,7 @@ export default function ArchitecturePage() {
             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
           }}>
             <img 
-              src="/architecture.png"
+              src="/architecture.jpg"
               alt="Content Compliance Architecture Diagram"
               style={{ 
                 width: '100%', 

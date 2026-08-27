@@ -33,12 +33,6 @@ export default function HelpPage() {
         Important information, tips, and troubleshooting for the Content Compliance Solution
       </Typography>
       
-      <Paper sx={{ p: 2, mb: 4, background: 'linear-gradient(to right, rgba(25, 118, 210, 0.28), rgba(156, 39, 176, 0.08), rgba(255, 152, 0, 0.28), transparent)', boxShadow: 'none' }}>
-        <Typography variant="body1" sx={{ fontWeight: 500 }}>
-          For questions or to report issues, reach out to us in Slack: <strong>#media-content-compliance-demo-interest</strong>
-        </Typography>
-      </Paper>
-
       <Alert severity="warning" sx={{ mb: 3, '& .MuiAlert-message': { width: '100%' } }}>
         <Typography variant="body1" sx={{ fontWeight: 'bold', mb: 0.5 }}>
           This solution is an accelerator / quick start

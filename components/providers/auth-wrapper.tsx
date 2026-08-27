@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { AuthService } from '../../services/auth';
+import { ConfigurationService } from '../../services/config';
 import { useSelector, useDispatch } from 'react-redux';
 import { IUserStateReducer, authStoreActions } from "../../store/auth";
+import { configStoreActions } from "../../store/config";
 import { IUser } from '@/types/user';
 import { ModernAuth } from '../auth/modern-auth';
 import { Box, CircularProgress } from '@mui/material';
@@ -18,6 +20,31 @@ export function AuthWrapper({ children }: AuthWrapperProps) {
     return state.authReducer.user
   });
   const dispatch = useDispatch();
+
+  // Load the analysis configuration into Redux app-wide, once the user is authenticated.
+  // Previously config was loaded only by the Home page, so navigating directly to (or
+  // refreshing on) other pages like /analyze left them without config — e.g. the analyze
+  // page rendered half-blank with no Analysis Settings. Loading it here guarantees config
+  // is present on every route. Runs after auth is confirmed, so Amplify is configured;
+  // getCustomConfig() uses Amplify, and we fall back to the static default config on any error.
+  const loadAppConfig = async (identityId?: string) => {
+    const configService = new ConfigurationService();
+    try {
+      if (identityId) {
+        const customConfig = await configService.getCustomConfig(identityId);
+        dispatch(configStoreActions.setConfig(customConfig));
+        return;
+      }
+    } catch {
+      // fall through to default config
+    }
+    try {
+      const defaultConfig = await configService.getDefaultConfig();
+      dispatch(configStoreActions.setConfig(defaultConfig));
+    } catch (err) {
+      console.error('Failed to load configuration:', err);
+    }
+  };
 
   useEffect(() => {
     const checkAuthStatus = async () => {
@@ -34,6 +61,7 @@ export function AuthWrapper({ children }: AuthWrapperProps) {
               loginId: user.signInDetails?.loginId || '',
               identityId: identityId || ''
             }));
+            await loadAppConfig(identityId);
           } catch (error) {
             console.error('Error getting user details:', error);
           }
@@ -84,6 +112,7 @@ export function AuthWrapper({ children }: AuthWrapperProps) {
         loginId: user.signInDetails?.loginId || '',
         identityId: identityId || ''
       }));
+      await loadAppConfig(identityId);
     } catch (error) {
       console.error('Error getting user details after auth:', error);
     }

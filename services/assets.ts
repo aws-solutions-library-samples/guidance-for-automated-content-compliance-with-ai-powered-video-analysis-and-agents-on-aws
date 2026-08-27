@@ -164,20 +164,29 @@ export class AssetsService {
      */
     private async getVideoDuration(file: File): Promise<number | null> {
         return new Promise((resolve) => {
+            const objectUrl = URL.createObjectURL(file);
             const video = document.createElement('video');
             video.preload = 'metadata';
-            
-            video.onloadedmetadata = () => {
-                window.URL.revokeObjectURL(video.src);
-                resolve(Math.round(video.duration));
+
+            // Guard so we only clean up once. Aborting the in-flight blob load
+            // (removeAttribute + load) BEFORE revoking prevents the browser from
+            // re-requesting a revoked blob URL, which was surfacing as a stray
+            // "blob:... net::ERR_FILE_NOT_FOUND" on repeat uploads.
+            let settled = false;
+            const finish = (result: number | null) => {
+                if (settled) return;
+                settled = true;
+                video.onloadedmetadata = null;
+                video.onerror = null;
+                video.removeAttribute('src');
+                video.load();
+                URL.revokeObjectURL(objectUrl);
+                resolve(result);
             };
-            
-            video.onerror = () => {
-                window.URL.revokeObjectURL(video.src);
-                resolve(null);
-            };
-            
-            video.src = URL.createObjectURL(file);
+
+            video.onloadedmetadata = () => finish(Math.round(video.duration));
+            video.onerror = () => finish(null);
+            video.src = objectUrl;
         });
     }
 

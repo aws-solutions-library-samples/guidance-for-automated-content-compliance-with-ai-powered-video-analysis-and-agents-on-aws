@@ -15,7 +15,6 @@ import {
   CircularProgress,
   Snackbar,
   Alert,
-  Dialog,
 } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import HistoryIcon from '@mui/icons-material/History';
@@ -27,18 +26,11 @@ export default function HomePage() {
   const router = useRouter();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
   const [notification, setNotification] = useState<{ open: boolean; message: string; severity: 'info' | 'error' }>({ open: false, message: '', severity: 'info' });
   
   const configService = new ConfigurationService();
   
   useEffect(() => {
-    // Check if user has seen the welcome modal
-    const hasSeenWelcome = localStorage.getItem('hasSeenWelcomeModal');
-    if (!hasSeenWelcome) {
-      setShowWelcomeModal(true);
-    }
-    
     const loadConfiguration = async () => {
       try {
         const identityId = await AuthService.getIdentityId();
@@ -86,98 +78,6 @@ export default function HomePage() {
 
   return (
     <div className={styles['home-container']}>
-      <Dialog
-        open={showWelcomeModal}
-        maxWidth="sm"
-        fullWidth
-        disableEscapeKeyDown
-        PaperProps={{
-          sx: {
-            background: 'linear-gradient(145deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)',
-            border: '1px solid rgba(138, 43, 226, 0.3)',
-            borderRadius: 3,
-            boxShadow: '0 0 50px rgba(138, 43, 226, 0.4), 0 0 100px rgba(0, 188, 212, 0.2)',
-            backdropFilter: 'blur(20px)',
-          }
-        }}
-        BackdropProps={{
-          sx: {
-            backgroundColor: 'rgba(0, 0, 0, 0.9)',
-            backdropFilter: 'blur(8px)',
-          }
-        }}
-      >
-        <Box sx={{ p: 4, textAlign: 'center' }}>
-          <Typography variant="h4" sx={{ 
-            fontWeight: 700, 
-            background: 'linear-gradient(135deg, #8a2be2, #00bcd4)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            mb: 1
-          }}>
-            Welcome
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.6)', mb: 4 }}>
-            Please review these important points
-          </Typography>
-          
-          <Box sx={{ textAlign: 'left', mb: 4 }}>
-            {[
-              'Your data is visible to only you, and the admin, but not to other users',
-              'Your data may be deleted at any time', 
-              'Do not upload extreme content'
-            ].map((text, index) => (
-              <Box key={index} sx={{ 
-                display: 'flex', 
-                alignItems: 'flex-start', 
-                mb: 2.5
-              }}>
-                <Box sx={{ 
-                  width: 6, 
-                  height: 6, 
-                  borderRadius: '50%', 
-                  background: 'linear-gradient(135deg, #8a2be2, #00bcd4)',
-                  mt: 1,
-                  mr: 2,
-                  flexShrink: 0
-                }} />
-                <Typography sx={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: 1.5 }}>
-                  {text}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
-          
-          <Button
-            variant="contained"
-            size="large"
-            onClick={() => {
-              localStorage.setItem('hasSeenWelcomeModal', 'true');
-              setShowWelcomeModal(false);
-            }}
-            sx={{
-              background: 'linear-gradient(135deg, #8a2be2, #00bcd4)',
-              border: '1px solid rgba(138, 43, 226, 0.3)',
-              borderRadius: 2,
-              px: 4,
-              py: 1.5,
-              fontSize: '1.1rem',
-              fontWeight: 600,
-              textTransform: 'none',
-              boxShadow: '0 0 20px rgba(138, 43, 226, 0.3)',
-              '&:hover': {
-                background: 'linear-gradient(135deg, #7a1fd2, #00acc1)',
-                boxShadow: '0 0 30px rgba(138, 43, 226, 0.5)',
-                transform: 'translateY(-1px)'
-              },
-              transition: 'all 0.3s ease'
-            }}
-          >
-            Let's go!
-          </Button>
-        </Box>
-      </Dialog>
       <Box sx={{ maxWidth: 1200, margin: '40px auto', p: 3, textAlign: 'center' }}>
         <Typography variant="h3" sx={{ mb: 2, fontWeight: 600 }}>
           Content Compliance Dashboard

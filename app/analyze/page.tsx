@@ -38,7 +38,9 @@ import { ILogMessagesStateReducer } from '../../store/log-output';
 import LogMessages from '../../components/log-output/log-output';
 import { CONTENT_TYPES, BedrockModelIds, vars, modelSupportsSamplingParams } from '../../amplify/global-variables';
 import ModelSelector from '../../components/model-selector/model-selector';
-import { IConfigStateReducer } from '../../store/config';
+import { IConfigStateReducer, configStoreActions } from '../../store/config';
+import { ConfigurationService } from '../../services/config';
+import { AuthService } from '../../services/auth';
 import NestedPill from '../../components/nested-pill/nested-pill';
 
 type ContentType = keyof typeof CONTENT_TYPES;
@@ -363,6 +365,39 @@ export default function AnalyzePage() {
     dispatch(logMessagesStoreActions.setSessionId(''));
     isActiveSession.current = false;
   }, [dispatch]);
+
+  // Ensure the analysis configuration is available on this page.
+  //
+  // Config is otherwise loaded only by the Home page into (non-persistent) Redux, so
+  // arriving at /analyze directly, after a refresh, or after any Redux reset left this
+  // page half-rendered (no Analysis Settings, upload disabled). Load it here as a
+  // fallback when it's missing. getCustomConfig() uses Amplify Storage/API; if that
+  // isn't ready we fall back to the default config, which is a plain fetch of a static
+  // file and therefore works regardless of Amplify state.
+  useEffect(() => {
+    if (config) return;
+    let cancelled = false;
+    (async () => {
+      const configService = new ConfigurationService();
+      try {
+        const identityId = await AuthService.getIdentityId();
+        if (identityId) {
+          const customConfig = await configService.getCustomConfig(identityId);
+          if (!cancelled) dispatch(configStoreActions.setConfig(customConfig));
+          return;
+        }
+      } catch {
+        // fall through to default config
+      }
+      try {
+        const defaultConfig = await configService.getDefaultConfig();
+        if (!cancelled) dispatch(configStoreActions.setConfig(defaultConfig));
+      } catch (err) {
+        console.error('Failed to load configuration on analyze page:', err);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [config, dispatch]);
 
   // Reset state whenever the pathname changes back to /analyze.
   // This handles client-side navigation (router.push, sidebar nav).
