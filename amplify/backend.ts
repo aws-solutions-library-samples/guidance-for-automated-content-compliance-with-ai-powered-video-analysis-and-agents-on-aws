@@ -42,6 +42,13 @@ const { cfnUserPool } = backend.auth.resources.cfnResources;
 // an empty array denotes "email" and "phone_number" cannot be used as a username
 cfnUserPool.usernameAttributes = [];
 
+const SOLUTION_DESCRIPTION =
+  "Guidance for Automated Content Compliance with AI-powered Video Analysis and Agents (SO9711)";
+
+// Apply the solution identifier to the root (top-level) stack. This is the
+// stack that represents the deployed guidance.
+backend.stack.templateOptions.description = SOLUTION_DESCRIPTION;
+
 export const customFunctionsStack = new CustomLambdaConstruct(
   backend.stack,
   vars.APP_PREFIX + "-custom-functions",
